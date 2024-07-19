@@ -16,6 +16,11 @@ public class InteractableAfterClue : MonoBehaviour
         {
             button = GetComponent<Button>();
         }
+
+        button.onClick.AddListener(() =>
+        {
+            button.interactable = false;
+        });
     }
 
     private void OnEnable()
