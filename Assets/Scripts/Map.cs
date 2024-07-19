@@ -11,6 +11,8 @@ public class Map : MonoBehaviour
 
     public MapView currentView;
 
+    [SerializeField] MapRegion[] regions;
+
     private void Start()
     {
         ShowMap();
@@ -24,9 +26,28 @@ public class Map : MonoBehaviour
         }
     }
 
+    public void FullView()
+    {
+        currentView = MapView.FullMap;
+
+        foreach (MapRegion r in regions)
+        {
+            r.ToggleView(false);
+            r.gameObject.SetActive(true);
+        }
+    }
+
     public void ViewRegion(MapRegion region)
     {
         region.ToggleView(true);
         currentView = MapView.Region;
+
+        foreach(MapRegion r in regions)
+        {
+            if(r != region)
+            {
+                r.gameObject.SetActive(false);
+            }
+        }
     }
 }

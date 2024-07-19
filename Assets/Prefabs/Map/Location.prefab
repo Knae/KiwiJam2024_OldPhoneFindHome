@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8841272705866630809}
   - component: {fileID: 3430079798023992205}
   - component: {fileID: 6420605769145776183}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Location
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 7786054084487987974}
   - component: {fileID: 6602928273126014368}
   - component: {fileID: 6158043497847505076}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Radius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
