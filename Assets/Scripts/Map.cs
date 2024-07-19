@@ -18,6 +18,8 @@ public class Map : MonoBehaviour
 
     [SerializeField] GameObject backButton;
 
+    [SerializeField] ScrollRect scrollRect;
+
     private void Awake()
     {
         instance = this;
@@ -25,6 +27,7 @@ public class Map : MonoBehaviour
 
     private void Start()
     {
+        FullView();
         ShowMap();
     }
 
@@ -45,6 +48,8 @@ public class Map : MonoBehaviour
             r.ToggleView(false);
             r.gameObject.SetActive(true);
         }
+
+        scrollRect.normalizedPosition = Vector2.one * 0.5f;
 
         backButton.SetActive(false);
     }

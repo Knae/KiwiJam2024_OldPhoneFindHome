@@ -13,6 +13,8 @@ public class MapRegion : MonoBehaviour//InteractableAfterClue
     [SerializeField] Button button;
 
     RectTransform rectTransform;
+    [SerializeField] Vector2 largeSize;
+    [SerializeField] Vector2 smallSize;
 
     private void Start()
     {
@@ -40,11 +42,11 @@ public class MapRegion : MonoBehaviour//InteractableAfterClue
         // todo: smoothly animate
         if(detailed)
         {
-            rectTransform.sizeDelta = new Vector2(2000, 2000);
+            rectTransform.sizeDelta = largeSize;
         }
         else
         {
-            rectTransform.sizeDelta = new Vector2(150, 150);
+            rectTransform.sizeDelta = smallSize;
         }
     }
 }
