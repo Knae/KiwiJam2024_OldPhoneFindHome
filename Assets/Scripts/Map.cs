@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Map : MonoBehaviour
 {
+    public static Map instance;
+
     public enum MapView {
         FullMap,
         Region
@@ -12,6 +15,13 @@ public class Map : MonoBehaviour
     public MapView currentView;
 
     [SerializeField] MapRegion[] regions;
+
+    [SerializeField] GameObject backButton;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -35,6 +45,8 @@ public class Map : MonoBehaviour
             r.ToggleView(false);
             r.gameObject.SetActive(true);
         }
+
+        backButton.SetActive(false);
     }
 
     public void ViewRegion(MapRegion region)
@@ -42,7 +54,9 @@ public class Map : MonoBehaviour
         region.ToggleView(true);
         currentView = MapView.Region;
 
-        foreach(MapRegion r in regions)
+        backButton.SetActive(true);
+
+        foreach (MapRegion r in regions)
         {
             if(r != region)
             {

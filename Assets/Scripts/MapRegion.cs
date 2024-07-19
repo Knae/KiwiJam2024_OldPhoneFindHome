@@ -1,19 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class MapRegion : InteractableAfterClue
+public class MapRegion : MonoBehaviour//InteractableAfterClue
 {
     bool detailed = false;
 
     [SerializeField] GameObject detailedView;
     [SerializeField] GameObject simpleView;
 
+    [SerializeField] Button button;
+
     RectTransform rectTransform;
 
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+
+        button.onClick.AddListener(() =>
+        {
+            Map.instance.ViewRegion(this);
+        });
     }
 
     public void ToggleView()
