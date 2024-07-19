@@ -6,7 +6,12 @@ public class MapLocation : InteractableAfterClue
 {
     [SerializeField] GameObject radiusImage;
     RectTransform radiusTransform;
-    [SerializeField] float radius;
+    [SerializeField] public float radius;
+
+    public RectTransform RectTransform
+    {
+        get { return GetComponent<RectTransform>();  }
+    }
 
     private void Start()
     {
@@ -17,6 +22,7 @@ public class MapLocation : InteractableAfterClue
     void RevealRadius()
     {
         radiusImage.SetActive(true);
-        radiusTransform.sizeDelta = Vector2.one * radius;
+        radiusTransform.sizeDelta = Vector2.one * radius * 2;
     }
+
 }

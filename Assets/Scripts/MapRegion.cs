@@ -10,6 +10,10 @@ public class MapRegion : MonoBehaviour//InteractableAfterClue
     [SerializeField] GameObject detailedView;
     [SerializeField] GameObject simpleView;
 
+    public Transform locationsParent;
+    public Vector2 minLocationPos;
+    public Vector2 maxLocationPos;
+
     [SerializeField] Button button;
 
     RectTransform rectTransform;

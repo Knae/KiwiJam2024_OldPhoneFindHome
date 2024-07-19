@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f5d42dcc2ae4fb5a3172c5259bfb07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clueID: location_tower1
+  clueID: no_clue
   button: {fileID: 3430079798023992205}
   radiusImage: {fileID: 8198024353352119766}
   radius: 300
