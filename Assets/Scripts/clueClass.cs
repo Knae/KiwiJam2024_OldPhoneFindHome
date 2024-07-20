@@ -26,9 +26,8 @@ public enum clueRegion
     EAST,
     [Description("west")]
     WEST,
-    [Description("south")]
-    SOUTH,
-    MAX
+    [Description("central")]
+    CENTRAL
 }
 
 

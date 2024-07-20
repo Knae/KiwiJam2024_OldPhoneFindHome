@@ -23,6 +23,7 @@ public class TextConversationManager : MonoBehaviour
 
     [SerializeField] TextConversation[] randomConversations;
     [SerializeField] TextConversation[] clueConversations;
+    [SerializeField] TextConversation[] regionClueConversations;
 
     private void Awake()
     {
@@ -53,7 +54,31 @@ public class TextConversationManager : MonoBehaviour
         if(chatClues.Count > 0)
         {
             int convIndex = Random.Range(0, clueConversations.Length);
-            CreateConversation_Clue(clueConversations[convIndex], chatClues[convIndex]);
+            int regionConvIndex = Random.Range(0, regionClueConversations.Length);
+            int chatClueIndex = Random.Range(0, chatClues.Count);
+            foreach(string chatClue in chatClues)
+            {
+                string clueID = chatClues[chatClueIndex];
+
+                if(ClueManager.instance.GetClue(clueID).containedRegion != clueRegion.NONE)
+                {
+                    CreateConversation_Clue(regionClueConversations[regionConvIndex], clueID);
+                }
+                else
+                {
+                    CreateConversation_Clue(clueConversations[convIndex], clueID);
+                }
+
+                if (convIndex >= clueConversations.Length)
+                    convIndex = 0;
+                regionConvIndex++;
+                if (regionConvIndex >= regionClueConversations.Length)
+                    regionConvIndex = 0;
+                chatClueIndex++;
+                if (chatClueIndex >= chatClues.Count)
+                    chatClueIndex = 0;
+                convIndex++;
+            }
         }
 
         for (int i = clueIndex; i < randomConversations.Length; i++)
@@ -130,6 +155,10 @@ public class TextConversationManager : MonoBehaviour
             else if(keyword.Equals("DISTANCE"))
             {
                 outputString += attachedClue.distance.ToString();
+            }
+            else if(keyword.Equals("REGION"))
+            {
+                outputString += attachedClue.containedRegion.ToString();
             }
 
             initialIndex = charIndex + 1;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Map : MonoBehaviour
 {
@@ -14,11 +15,23 @@ public class Map : MonoBehaviour
 
     public MapView currentView;
 
-    [SerializeField] MapRegion[] regions;
+    [System.Serializable]
+    public struct Region
+    {
+        public MapRegion region;
+        public MapLocation[] landmarks;
+
+    }
+
+    [SerializeField] Region[] regions;
 
     [SerializeField] GameObject backButton;
 
     [SerializeField] ScrollRect scrollRect;
+
+    [SerializeField] GameObject guessPanel;
+    [SerializeField] TextMeshProUGUI guessText;
+    MapLocation selectedLocation;
 
     public enum LandmarkType
     {
@@ -33,7 +46,7 @@ public class Map : MonoBehaviour
     [SerializeField] GameObject locationPrefab;
 
     [Header("Clues & Home")]
-    [SerializeField] MapRegion homeRegion;
+    [SerializeField] Region homeRegion;
     [SerializeField] MapLocation home;
 
     private bool setupComplete = false;
@@ -42,6 +55,12 @@ public class Map : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        for (int i = 0; i < regions.Length; i++)
+        {
+            regions[i].landmarks = regions[i].region.GetComponentsInChildren<MapLocation>(true);
+            Debug.Log(regions[i].region.clueRegion + " " + regions[i].landmarks.Length);
+        }
     }
 
     private void Start()
@@ -56,72 +75,62 @@ public class Map : MonoBehaviour
     {
         int locID = 0;
 
-        // pick home location and create pin for it
-        homeRegion = regions[Random.Range(0, regions.Length)];
-        home = CreateRandomLocation(homeRegion);
-        home.landmarkType = LandmarkType.House;
-        home.image.sprite = landmarkSprites[0];
-
-        // create landmarks around home and create clues for them
-        for (int i = 0; i < Random.Range(2, 5); i++)
+        // create random houses in each region
+        foreach(Region r in regions)
         {
-            MapLocation landmark = CreateRandomLocation(homeRegion);
-
-            int landmarkDistance = Random.Range(50, 400);
-
-            // put position at random point landmarkDistance away from home
-            float angle = Random.Range(0, 360);
-            Vector2 pos = new Vector2(
-                Mathf.Cos(angle),
-                Mathf.Sin(angle)
-            ) * landmarkDistance * 0.95f; // slightly closer for visual clarity
-
-            landmark.RectTransform.anchoredPosition = home.RectTransform.anchoredPosition + pos;
-
-            landmark.radius = landmarkDistance;
-
-            // create a random location to ensure the home isn't the only place in the radius
-            MapLocation randomLoc = CreateRandomLocation(homeRegion);
-            angle = Random.Range(0, 360);
-            pos = new Vector2(
-                Mathf.Cos(angle),
-                Mathf.Sin(angle)
-            ) * landmarkDistance;
-            randomLoc.RectTransform.anchoredPosition = landmark.RectTransform.anchoredPosition + pos;
-            locID++;
-
-            // create clue in cluemanager
-            string landmarkName = landmark.landmarkType.ToString() + locID;
-            
-            clueClass clue = new clueClass();
-            int randomSource = Random.Range(1, (int)clueSource.MAX);
-            clue.SetData(/*homeRegion.clueRegion*/clueRegion.NONE, (clueSource)randomSource , landmarkDistance, landmarkName);
-
-            landmark.clueID = clue.getBaseName;
-
-            ClueManager.instance.AddClue(landmark.clueID, clue);
-
-            //ClueManager.instance.FoundClue(landmark.clueID); // this is just for debug, should be adding to a list of undiscovered clues
-
-            locID++;
-        }
-
-        // create clue for region
-        int randomRegionNum = Random.Range(1, (int)clueRegion.MAX);
-        int randomRegionSource = Random.Range(1, (int)clueSource.MAX);
-        string regionClueID = "regionClue";
-        clueClass newRegionClue = new clueClass();
-        newRegionClue.SetData((clueRegion)randomRegionNum, (clueSource)randomRegionSource);
-        ClueManager.instance.AddClue(regionClueID, newRegionClue);
-
-        // create random non-clue landmarks to clutter map
-        foreach (MapRegion r in regions)
-        {
-            for (int i = 0; i < Random.Range(10, 25); i++)
+            for (int i = 0; i < Random.Range(5, 15); i++)
             {
-                CreateRandomLocation(r);
+                MapLocation newLoc = CreateRandomLocation(r.region, LandmarkType.House);
+                newLoc.guessable = true;
+                newLoc.landmarkName = "House " + locID;
                 locID++;
             }
+        }
+
+        // pick region for home to be in
+        homeRegion = regions[Random.Range(0, regions.Length)];
+
+        // create clue for region
+        clueClass regionClue = new clueClass();
+        int source = Random.Range(0, (int)clueSource.PHOTO);
+        regionClue.SetData(homeRegion.region.clueRegion, (clueSource)source);
+        ClueManager.instance.AddClue(regionClue.getBaseName, regionClue);
+
+        // create home location
+        home = CreateRandomLocation(homeRegion.region, LandmarkType.House);
+        home.guessable = true;
+        home.landmarkName = "House " + locID;
+
+        // create clues based on distance to 3 random landmarks in that region
+        // using loop with a random start index to avoid randomly selecting the same landmark multiple times
+        Debug.Log(homeRegion.region.clueRegion);
+        Debug.Log(homeRegion.landmarks.Length);
+        int index = Random.Range(0, homeRegion.landmarks.Length);
+        int landmarkCount = 0;
+        while(landmarkCount < 3)
+        {
+            Debug.Log(index);
+            MapLocation landmark = homeRegion.landmarks[index];
+            int dist = (int)Vector2.Distance(
+                    landmark.RectTransform.anchoredPosition,
+                    home.RectTransform.anchoredPosition
+            );
+
+            landmark.radius = dist;
+
+            clueClass landmarkClue = new clueClass();
+            source = Random.Range(0, (int)clueSource.PHOTO);
+            landmarkClue.SetData(clueRegion.NONE, (clueSource)source, dist, landmark.GetName);
+
+            ClueManager.instance.AddClue(landmarkClue.getBaseName, landmarkClue);
+
+            landmark.clueID = landmarkClue.getBaseName;
+
+            landmarkCount++;
+
+            index++;
+            if (index >= homeRegion.landmarks.Length)
+                index = 0;
         }
 
         setupComplete = true;
@@ -145,7 +154,24 @@ public class Map : MonoBehaviour
         loc.image.sprite = landmarkSprites[(int)loc.landmarkType];
 
         return loc;
+    }
+    MapLocation CreateRandomLocation(MapRegion region, LandmarkType type)
+    {
+        // create location object
+        MapLocation loc = Instantiate(locationPrefab, region.locationsParent).GetComponent<MapLocation>();
 
+        // random position
+        Vector2 pos = new Vector2(
+            Random.Range(region.minLocationPos.x, region.maxLocationPos.x),
+            Random.Range(region.minLocationPos.y, region.maxLocationPos.y)
+        );
+        loc.RectTransform.anchoredPosition = pos;
+
+        // random type of location (e.g. mountain, lake, house) and sprite based on that
+        loc.landmarkType = type;
+        loc.image.sprite = landmarkSprites[(int)loc.landmarkType];
+
+        return loc;
     }
 
     public void ShowMap() // to be called when camera pans to map view
@@ -160,10 +186,10 @@ public class Map : MonoBehaviour
     {
         currentView = MapView.FullMap;
 
-        foreach (MapRegion r in regions)
+        foreach (Region r in regions)
         {
-            r.ToggleView(false);
-            r.gameObject.SetActive(true);
+            r.region.ToggleView(false);
+            r.region.gameObject.SetActive(true);
         }
 
         scrollRect.normalizedPosition = Vector2.one * 0.5f;
@@ -178,12 +204,40 @@ public class Map : MonoBehaviour
 
         backButton.SetActive(true);
 
-        foreach (MapRegion r in regions)
+        foreach (Region r in regions)
         {
-            if(r != region)
+            if(r.region != region)
             {
-                r.gameObject.SetActive(false);
+                r.region.gameObject.SetActive(false);
             }
         }
+    }
+
+    public void SelectLocation(MapLocation loc)
+    {
+        selectedLocation = loc;
+        guessPanel.SetActive(loc != null); // todo if there's time: animate
+        if(loc != null)
+        {
+            guessText.text = "You have selected " + loc.GetName + ". Lock in guess?";
+        }
+    }
+
+    public void ConfirmGuess()
+    {
+        if(selectedLocation == home)
+        {
+            Debug.Log("win");
+            // player wins
+        }
+        else
+        {
+            Debug.Log("lose");
+            // player loses
+        }
+    }
+    public void CancelGuess()
+    {
+        SelectLocation(null);
     }
 }
