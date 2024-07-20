@@ -28,23 +28,30 @@ public class appButtonScript : MonoBehaviour
     {
         if (functioning)
         {
+            HomeScreen.instance.HideShowScreen();
+
             switch (appType)
             {
                 case clueSource.CONVERSATION:
-                    {
-                        //chatModule.SetActive(true);
-                        HomeScreen.instance.HideShowScreen();
-                        HomeScreen.instance.GetChatObject.SetActive(true);
-                        break;
-                    }
+                {
+                    HomeScreen.instance.GetChatObject.SetActive(true);
+                    break;
+                }
                 case clueSource.TRAVEL:
-                    {
-                        break;
-                    }
+                {
+                    HomeScreen.instance.GetUbeeObject.SetActive(true);
+                    break;
+                }
                 case clueSource.PHOTO:
-                    {
-                        break;
-                    }
+                {
+                    break;
+                }
+                default:
+                {
+                    Debug.LogWarning("WARN[appButtonScript][OpenApp]: App button marked as functioning but has no type assigned to it");
+                    HomeScreen.instance.ShowHomeScreen();
+                    break;
+                }
             } 
         }
         else

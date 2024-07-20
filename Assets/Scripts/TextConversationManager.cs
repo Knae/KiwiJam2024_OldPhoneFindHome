@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.XR;
+using UnityEngine.Rendering;
 
 public class TextConversationManager : MonoBehaviour
 {
@@ -40,16 +42,20 @@ public class TextConversationManager : MonoBehaviour
         }
 
         int clueIndex = Random.Range(0, randomConversations.Length);
-
+        //TODO: create either a random conversation or a clue conversation at random rather then in sequence?
         for (int i = 0; i < clueIndex; i++)
         {
             CreateConversation(randomConversations[i]);
         }
         // todo: if there's a clue in this app
-        if(true)
+        //do all of them at once?
+        List<string> chatClues = ClueManager.instance.GetCluesOfType(clueSource.CONVERSATION);
+        if(chatClues.Count > 0)
         {
-            CreateConversation(clueConversations[Random.Range(0, clueConversations.Length)]);
+            int convIndex = Random.Range(0, clueConversations.Length);
+            CreateConversation_Clue(clueConversations[convIndex], chatClues[convIndex]);
         }
+
         for (int i = clueIndex; i < randomConversations.Length; i++)
         {
             CreateConversation(randomConversations[i]);
@@ -62,7 +68,13 @@ public class TextConversationManager : MonoBehaviour
         c.Setup(conversation);
     }
 
-    public void OpenConversation(TextConversation conversation)
+    void CreateConversation_Clue(TextConversation conversation, string clueID)
+    {
+        TextConversationButton c = Instantiate(conversationPrefab, conversationsParent).GetComponent<TextConversationButton>();
+        c.Setup(conversation,clueID);
+    }
+
+    public void OpenConversation(TextConversation conversation, bool hasClue = false, string clueID = "")
     {
         contactNameText.text = conversation.contactName;
 
@@ -71,13 +83,67 @@ public class TextConversationManager : MonoBehaviour
             Destroy(child.gameObject);
         }
 
+
         for (int i = 0; i < conversation.conversation.Length; i++) {
             TextConversation.Text text = conversation.conversation[i];
 
             GameObject prefab = text.isUser ? userMessage : otherMessage;
-            Instantiate(prefab, messagesParent).GetComponentInChildren<TextMeshProUGUI>().text = text.message;
+            Instantiate(prefab, messagesParent).GetComponentInChildren<TextMeshProUGUI>().text = (hasClue?BuildClueText(clueID,text.message):text.message);
         }
 
         conversationView.SetActive(true);
+
+        //set clue as discovered if it has one?
+        if (hasClue)
+        {
+            ClueManager.instance.FoundClue(clueID); 
+        }
+    }
+
+    /// <summary>
+    /// Build the clue text, substituting keywords with
+    /// data from the attached clue
+    /// </summary>
+    /// <param name="clueID"></param>
+    /// <param name="fullText"></param>
+    /// <returns></returns>
+    private string BuildClueText(string clueID, string fullText)
+    {
+        string outputString = string.Empty;
+        clueClass attachedClue = ClueManager.instance.GetClue(clueID);
+        int charIndex = fullText.IndexOf("{");
+        int initialIndex = 0;
+        while( charIndex != -1)
+        {
+            outputString += fullText.Substring(initialIndex, charIndex-initialIndex);
+            initialIndex = charIndex + 1;
+            charIndex = fullText.IndexOf("}", initialIndex);
+
+            string keyword = fullText.Substring(initialIndex, charIndex-initialIndex);
+            
+            //replace LOC with landmark?
+            if(keyword.Equals("LOC"))
+            {
+                outputString += attachedClue.containedLandmark;
+            }
+            //replace DISTANCE with distance
+            else if(keyword.Equals("DISTANCE"))
+            {
+                outputString += attachedClue.distance.ToString();
+            }
+
+            initialIndex = charIndex + 1;
+            charIndex = fullText.IndexOf("{", initialIndex);
+        }
+
+        if(outputString!= string.Empty)
+        {
+            outputString += fullText.Substring(initialIndex);
+            return outputString;
+        }
+        else
+        {
+            return fullText;
+        }
     }
 }

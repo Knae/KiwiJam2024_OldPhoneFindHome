@@ -1,6 +1,6 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class HomeScreen : MonoBehaviour
@@ -13,11 +13,13 @@ public class HomeScreen : MonoBehaviour
     public static HomeScreen instance;
     [Header("Connected Elements")]
     [SerializeField] private GameObject messageApp;
+    [SerializeField] private GameObject ubeeApp;
     [SerializeField] private List<appButtonScript> appButtons = new List<appButtonScript>();
 
     private bool setupComplete = false;
 
     public GameObject GetChatObject => messageApp;
+    public GameObject GetUbeeObject => ubeeApp;
 
     private void Awake()
     {
@@ -50,11 +52,23 @@ public class HomeScreen : MonoBehaviour
     /// </summary>
     private IEnumerator ConnectApps()
     {
-        //int getRandomIndex => 
+        Func<int> getRandomIndex = () => 
+        {
+            int validRandom = 0;
+
+            do
+            {
+                validRandom = UnityEngine.Random.Range(0, appButtons.Count - 1);
+            } while (appButtons[validRandom].isWorking);
+
+            return validRandom;
+        };
         //set up a chat app
-        int randomIndex = Random.Range(0, appButtons.Count - 1);
-        appButtons[randomIndex].SetAsWorkingApp(clueSource.CONVERSATION,appSprite_Chat);
+        //int randomIndex = getRandomIndex();//UnityEngine.Random.Range(0, appButtons.Count - 1);
+        appButtons[getRandomIndex()].SetAsWorkingApp(clueSource.CONVERSATION,appSprite_Chat);
+
         //setup a uber app
+        appButtons[getRandomIndex()].SetAsWorkingApp(clueSource.TRAVEL, appSprite_Uber);
 
         //setup a photos app
 
@@ -64,7 +78,7 @@ public class HomeScreen : MonoBehaviour
         {
             if (!button.isWorking)
             {
-                button.SetAsBroken(appSprites_random[Random.Range(0, appSprites_random.Count - 1)]);
+                button.SetAsBroken(appSprites_random[UnityEngine.Random.Range(0, appSprites_random.Count - 1)]);
             }
         }
 
@@ -75,6 +89,7 @@ public class HomeScreen : MonoBehaviour
     {
         gameObject.SetActive(true);
         messageApp.gameObject.SetActive(false);
+        ubeeApp.gameObject.SetActive(false);
     }
 
     public void HideShowScreen()
