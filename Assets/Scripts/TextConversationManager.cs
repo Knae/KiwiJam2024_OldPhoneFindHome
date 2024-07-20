@@ -27,22 +27,27 @@ public class TextConversationManager : MonoBehaviour
         instance = this;
     }
 
-    private void Start()
+    private void OnEnable()
     {
         Setup();
     }
 
     void Setup() // to be called once clues are generated
     {
-        for (int i = 0; i < Random.Range(1, 4); i++)
-        {
-            CreateConversation(randomConversations[Random.Range(0, randomConversations.Length)]);
-        }
+        int clueIndex = Random.Range(0, randomConversations.Length);
 
+        for (int i = 0; i < clueIndex; i++)
+        {
+            CreateConversation(randomConversations[i]);
+        }
         // todo: if there's a clue in this app
         if(true)
         {
             CreateConversation(clueConversations[Random.Range(0, clueConversations.Length)]);
+        }
+        for (int i = clueIndex; i < randomConversations.Length; i++)
+        {
+            CreateConversation(randomConversations[i]);
         }
     }
 
