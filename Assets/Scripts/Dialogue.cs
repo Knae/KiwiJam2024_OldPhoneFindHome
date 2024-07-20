@@ -6,6 +6,8 @@ using TMPro;
 
 public class Dialogue : MonoBehaviour
 {
+    public static Dialogue instance;
+
     [SerializeField] TextMeshProUGUI dialogueText;
     [SerializeField] Image chatBox;
 
@@ -16,6 +18,13 @@ public class Dialogue : MonoBehaviour
     [SerializeField] int index = 0;
 
     [SerializeField] DialogueScript openingDialogue;
+
+    [SerializeField] DialogueScript[] corruptedAppDialogues;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -31,6 +40,11 @@ public class Dialogue : MonoBehaviour
                 NextLine();
             }
         }
+    }
+
+    public void CorruptedApp()
+    {
+        StartConversation(corruptedAppDialogues[Random.Range(0, corruptedAppDialogues.Length)]);
     }
 
     public void StartConversation(DialogueScript conversation)
@@ -52,6 +66,8 @@ public class Dialogue : MonoBehaviour
             {
                 currentConversation = null;
                 chatBox.gameObject.SetActive(false);
+
+                return;
             }
         }
 

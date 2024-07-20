@@ -56,7 +56,11 @@ public class appButtonScript : MonoBehaviour
         }
         else
         {
-        //Display broken message
+            HomeScreen.instance.GetCorruptedObject.SetActive(true);
+            if(Random.Range(0, 3) == 0)
+            {
+                Dialogue.instance.CorruptedApp(); // show some dialogue complaining about corrupted apps
+            }
         }
     }
 }

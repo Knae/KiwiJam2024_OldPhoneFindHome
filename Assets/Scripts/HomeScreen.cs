@@ -14,12 +14,14 @@ public class HomeScreen : MonoBehaviour
     [Header("Connected Elements")]
     [SerializeField] private GameObject messageApp;
     [SerializeField] private GameObject ubeeApp;
+    [SerializeField] private GameObject corruptedApp;
     [SerializeField] private List<appButtonScript> appButtons = new List<appButtonScript>();
 
     private bool setupComplete = false;
 
     public GameObject GetChatObject => messageApp;
     public GameObject GetUbeeObject => ubeeApp;
+    public GameObject GetCorruptedObject => corruptedApp;
 
     private void Awake()
     {
@@ -90,6 +92,7 @@ public class HomeScreen : MonoBehaviour
         gameObject.SetActive(true);
         messageApp.gameObject.SetActive(false);
         ubeeApp.gameObject.SetActive(false);
+        corruptedApp.gameObject.SetActive(false);
     }
 
     public void HideShowScreen()
