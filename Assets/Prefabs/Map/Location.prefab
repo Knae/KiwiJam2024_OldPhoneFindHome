@@ -234,10 +234,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.99398583, g: 1, b: 0.759434, a: 1}
+    m_NormalColor: {r: 0.99280936, g: 1, b: 0.8915094, a: 0.9019608}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 1}
     m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.78431374}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -271,11 +271,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clueID: no_clue
   button: {fileID: 3430079798023992205}
+  overrideInteractable: 0
   radiusImage: {fileID: 8198024353352119766}
   radius: 300
   landmarkType: 0
   image: {fileID: 8841272705866630809}
   landmarkName: 
+  label: {fileID: 0}
+  guessable: 0
 --- !u!1 &8198024353352119766
 GameObject:
   m_ObjectHideFlags: 0

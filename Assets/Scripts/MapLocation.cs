@@ -36,6 +36,8 @@ public class MapLocation : InteractableAfterClue
 
     [SerializeField] TextMeshProUGUI label;
 
+    public bool guessable; // is this a location you can select as your final guess (i.e. a house not a landmark)
+
     private void Start()
     {
         label = GetComponentInChildren<TextMeshProUGUI>();
@@ -43,7 +45,16 @@ public class MapLocation : InteractableAfterClue
         label.gameObject.SetActive(!string.IsNullOrEmpty(landmarkName));
         label.text = GetName;
 
-        button.onClick.AddListener(RevealRadius);
+        if(guessable)
+        {
+            button.onClick.AddListener(SelectThis);
+            overrideInteractable = true;
+            button.interactable = true;
+        }
+        else
+        {
+            button.onClick.AddListener(RevealRadius);
+        }
         radiusTransform = radiusImage.GetComponent<RectTransform>();
     }
 
@@ -51,6 +62,12 @@ public class MapLocation : InteractableAfterClue
     {
         radiusImage.SetActive(true);
         radiusTransform.sizeDelta = Vector2.one * radius * 2;
+    }
+
+    void SelectThis()
+    {
+        // todo: something visual
+        Map.instance.SelectLocation(this);
     }
 
 }

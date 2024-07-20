@@ -9,6 +9,8 @@ public class InteractableAfterClue : MonoBehaviour
 
     [SerializeField] public Button button;
 
+    public bool overrideInteractable = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,7 @@ public class InteractableAfterClue : MonoBehaviour
 
     public void Check()
     {
-        button.interactable = ClueManager.instance.ClueRevealed(clueID);
+        if(!overrideInteractable)
+            button.interactable = ClueManager.instance.ClueRevealed(clueID);
     }
 }

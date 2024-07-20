@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Map : MonoBehaviour
 {
@@ -27,6 +28,10 @@ public class Map : MonoBehaviour
     [SerializeField] GameObject backButton;
 
     [SerializeField] ScrollRect scrollRect;
+
+    [SerializeField] GameObject guessPanel;
+    [SerializeField] TextMeshProUGUI guessText;
+    MapLocation selectedLocation;
 
     public enum LandmarkType
     {
@@ -75,7 +80,10 @@ public class Map : MonoBehaviour
         {
             for (int i = 0; i < Random.Range(5, 15); i++)
             {
-                CreateRandomLocation(r.region, LandmarkType.House);
+                MapLocation newLoc = CreateRandomLocation(r.region, LandmarkType.House);
+                newLoc.guessable = true;
+                newLoc.landmarkName = "House " + locID;
+                locID++;
             }
         }
 
@@ -90,6 +98,8 @@ public class Map : MonoBehaviour
 
         // create home location
         home = CreateRandomLocation(homeRegion.region, LandmarkType.House);
+        home.guessable = true;
+        home.landmarkName = "House " + locID;
 
         // create clues based on distance to 3 random landmarks in that region
         // using loop with a random start index to avoid randomly selecting the same landmark multiple times
@@ -201,5 +211,33 @@ public class Map : MonoBehaviour
                 r.region.gameObject.SetActive(false);
             }
         }
+    }
+
+    public void SelectLocation(MapLocation loc)
+    {
+        selectedLocation = loc;
+        guessPanel.SetActive(loc != null); // todo if there's time: animate
+        if(loc != null)
+        {
+            guessText.text = "You have selected " + loc.GetName + ". Lock in guess?";
+        }
+    }
+
+    public void ConfirmGuess()
+    {
+        if(selectedLocation == home)
+        {
+            Debug.Log("win");
+            // player wins
+        }
+        else
+        {
+            Debug.Log("lose");
+            // player loses
+        }
+    }
+    public void CancelGuess()
+    {
+        SelectLocation(null);
     }
 }
