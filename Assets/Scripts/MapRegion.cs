@@ -20,6 +20,8 @@ public class MapRegion : MonoBehaviour//InteractableAfterClue
     [SerializeField] Vector2 largeSize;
     [SerializeField] Vector2 smallSize;
 
+    public clueRegion clueRegion;
+
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();

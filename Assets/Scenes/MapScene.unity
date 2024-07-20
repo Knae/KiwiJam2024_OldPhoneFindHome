@@ -529,10 +529,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da960b9fa247f4c83b06a24b9a7ba26c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  discoveredClues:
-  - typeoflandmark0
-  - typeoflandmark1
-  - typeoflandmark2
+  minDist: 10
+  maxDist: 100
+  discoveredClues: []
 --- !u!4 &244962541
 Transform:
   m_ObjectHideFlags: 0
@@ -1364,6 +1363,10 @@ PrefabInstance:
       value: region_east
       objectReference: {fileID: 0}
     - target: {fileID: 1653067377788773981, guid: e24f6517f502642fe91b6b7b6903c46c, type: 3}
+      propertyPath: clueRegion
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653067377788773981, guid: e24f6517f502642fe91b6b7b6903c46c, type: 3}
       propertyPath: largeSize.x
       value: 2000
       objectReference: {fileID: 0}
@@ -1792,6 +1795,10 @@ PrefabInstance:
     - target: {fileID: 1653067377788773981, guid: e24f6517f502642fe91b6b7b6903c46c, type: 3}
       propertyPath: clueID
       value: region_south
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653067377788773981, guid: e24f6517f502642fe91b6b7b6903c46c, type: 3}
+      propertyPath: clueRegion
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1653067377788773981, guid: e24f6517f502642fe91b6b7b6903c46c, type: 3}
       propertyPath: largeSize.x
@@ -2283,6 +2290,10 @@ PrefabInstance:
     - target: {fileID: 997172399427889131, guid: e24f6517f502642fe91b6b7b6903c46c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653067377788773981, guid: e24f6517f502642fe91b6b7b6903c46c, type: 3}
+      propertyPath: clueRegion
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1653067377788773981, guid: e24f6517f502642fe91b6b7b6903c46c, type: 3}
       propertyPath: smallSize.x

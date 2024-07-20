@@ -12,7 +12,7 @@ public class HomeScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ClueManager.instance.GenerateClues();
+
     }
 
     // Update is called once per frame

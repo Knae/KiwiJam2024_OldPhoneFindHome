@@ -5,8 +5,6 @@ using UnityEngine;
 public class ClueManager : MonoBehaviour
 {
     [Header("Settings")]
-    public int minClues = 3;
-    public int maxClues = 10;
     public float minDist = 10.0f;
     public float maxDist = 100.0f;
 
@@ -27,39 +25,9 @@ public class ClueManager : MonoBehaviour
         }
     }
 
-    public void GenerateClues()
+    public void AddClue(string id, clueClass clue)
     {
-        int numberOfClues = Random.Range(minClues, maxClues);
-
-        //Add a region clue
-        int randomRegionNum = Random.Range(1 , (int)clueRegion.WEST);
-        int randomRegionSource = Random.Range(1, (int)clueSource.PHOTO);
-        string regionClueID = "regionClue";
-        clueClass newRegionClue = new clueClass();
-        newRegionClue.SetData((clueRegion)randomRegionNum ,(clueSource)randomRegionSource);
-        existingClues.Add(regionClueID,newRegionClue);
-
-        //Generate other clues
-        while(existingClues.Count < numberOfClues)
-        {
-            randomRegionSource = Random.Range(1, (int)clueSource.PHOTO);
-            float randDist = Random.Range(minDist, maxDist);
-            clueClass newClue = new clueClass();
-            newClue.SetData(clueRegion.NONE, (clueSource)randomRegionSource, randDist);
-            string clueID = newClue.getBaseName;
-            int count = 1;
-
-            //To avoid duplicate, add a number to the end if the ID
-            //already exists
-            while(existingClues.ContainsKey(clueID))
-            {
-                clueID = newClue.getBaseName + count.ToString();
-                count++;
-            }
-            existingClues.Add(clueID, newClue);
-        }
-
-        Debug.Log("LOG[ClueManager]: CLue generation done");
+        existingClues.Add(id, clue);
     }
 
     /// <summary>

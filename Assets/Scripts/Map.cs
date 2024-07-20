@@ -71,7 +71,7 @@ public class Map : MonoBehaviour
             Vector2 pos = new Vector2(
                 Mathf.Cos(angle),
                 Mathf.Sin(angle)
-            ) * landmarkDistance;
+            ) * landmarkDistance * 0.95f; // slightly closer for visual clarity
 
             landmark.RectTransform.anchoredPosition = home.RectTransform.anchoredPosition + pos;
 
@@ -87,18 +87,31 @@ public class Map : MonoBehaviour
             randomLoc.RectTransform.anchoredPosition = landmark.RectTransform.anchoredPosition + pos;
             locID++;
 
-            // todo: create clue in cluemanager
-            // todo: clue ID based on type
-            landmark.clueID = landmark.landmarkType.ToString() + locID.ToString();
-            ClueManager.instance.discoveredClues.Add(landmark.clueID); // this is just for debug, should be adding to a list of undiscovered clues
+            // create clue in cluemanager
+            string landmarkName = landmark.landmarkType.ToString() + locID;
+            
+            clueClass clue = new clueClass();
+            clue.SetData(homeRegion.clueRegion, clueSource.NONE, landmarkDistance, landmarkName);
+
+            landmark.clueID = clue.getBaseName;
+
+            ClueManager.instance.AddClue(landmark.clueID, clue);
+
+            ClueManager.instance.FoundClue(landmark.clueID); // this is just for debug, should be adding to a list of undiscovered clues
 
             locID++;
         }
 
         // create clue for region
+        int randomRegionNum = Random.Range(1, (int)clueRegion.WEST);
+        int randomRegionSource = Random.Range(1, (int)clueSource.PHOTO);
+        string regionClueID = "regionClue";
+        clueClass newRegionClue = new clueClass();
+        newRegionClue.SetData((clueRegion)randomRegionNum, (clueSource)randomRegionSource);
+        ClueManager.instance.AddClue(regionClueID, newRegionClue);
 
         // create random non-clue landmarks to clutter map
-        foreach(MapRegion r in regions)
+        foreach (MapRegion r in regions)
         {
             for (int i = 0; i < Random.Range(5, 15); i++)
             {
