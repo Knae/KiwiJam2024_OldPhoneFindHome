@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class HomeScreen : MonoBehaviour
@@ -31,7 +32,7 @@ public class HomeScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        StartCoroutine(ConnectApps());
     }
 
     // Update is called once per frame
@@ -43,19 +44,9 @@ public class HomeScreen : MonoBehaviour
     /// <summary>
     /// Generate clues and corresponding app connections
     /// </summary>
-    private void ConnectApps()
+    private IEnumerator ConnectApps()
     {
-        //List<string> allClueIDs = ClueManager.instance.GetClueIDs();
-
-        //foreach (string id in allClueIDs) 
-        //{
-        //    clueSource currentSource = ClueManager.instance.GetClue(id).source;
-
-        //    //choose a random app on screen
-        //    int randomIndex = Random.Range(0, appButtons.Count - 1);
-        //    appButtons[randomIndex].SetAsWorkingApp(id,currentSource,);
-        //}
-
+        //int getRandomIndex => 
         //set up a chat app
         int randomIndex = Random.Range(0, appButtons.Count - 1);
         appButtons[randomIndex].SetAsWorkingApp(clueSource.CONVERSATION,appSprite_Chat);
@@ -64,13 +55,16 @@ public class HomeScreen : MonoBehaviour
         //setup a photos app
 
         //Set other apps as non-functional
-        foreach (var button in appButtons) 
+        //List<int> usedN
+        foreach (var button in appButtons)
         {
-            if(!button.isWorking)
+            if (!button.isWorking)
             {
-                button.SetAsBroken(appSprites_random[Random.Range(0,appSprites_random.Count-1)]);
+                button.SetAsBroken(appSprites_random[Random.Range(0, appSprites_random.Count - 1)]);
             }
         }
+
+        yield return null;
     }
 
     public void ShowHomeScreen()

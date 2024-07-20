@@ -36,6 +36,9 @@ public class Map : MonoBehaviour
     [SerializeField] MapRegion homeRegion;
     [SerializeField] MapLocation home;
 
+    private bool setupComplete = false;
+    public bool setupDone=> setupComplete;
+
     private void Awake()
     {
         instance = this;
@@ -120,6 +123,8 @@ public class Map : MonoBehaviour
                 locID++;
             }
         }
+
+        setupComplete = true;
     }
 
     MapLocation CreateRandomLocation(MapRegion region)
