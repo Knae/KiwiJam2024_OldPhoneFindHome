@@ -3033,6 +3033,14 @@ PrefabInstance:
       propertyPath: m_ChildControlHeight
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5188099916559819886, guid: 657ae3e28d32948589ae6384e7b7b91b, type: 3}
+      propertyPath: regionClueConversations.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188099916559819886, guid: 657ae3e28d32948589ae6384e7b7b91b, type: 3}
+      propertyPath: regionClueConversations.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7d7b1f37e56ca4f45911fe5f98bb96d9, type: 2}
     - target: {fileID: 6812105895619000135, guid: 657ae3e28d32948589ae6384e7b7b91b, type: 3}
       propertyPath: m_Name
       value: TextsApp
