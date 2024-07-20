@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,8 @@ public class appButtonScript : MonoBehaviour
     [SerializeField] private Image appImage;
 
     public bool isWorking => functioning;
+    private bool isMinorClue = false;
+    private GameObject minorClueObject = null;
 
     public void SetAsWorkingApp(clueSource type, Sprite imageSprite)
     {
@@ -17,6 +20,14 @@ public class appButtonScript : MonoBehaviour
         appImage.sprite = imageSprite;
 
         appType = type;
+    }
+
+    public void SetAsHintApp(Sprite imageSprite,GameObject targetObject)
+    {
+        functioning = true;
+        isMinorClue = true;
+        minorClueObject = targetObject;
+        appImage.sprite = imageSprite;
     }
 
     public void SetAsBroken( Sprite imageSprite)
@@ -30,29 +41,32 @@ public class appButtonScript : MonoBehaviour
         {
             HomeScreen.instance.HideShowScreen();
 
-            switch (appType)
+            if (!isMinorClue)
             {
-                case clueSource.CONVERSATION:
+                switch (appType)
                 {
-                    HomeScreen.instance.GetChatObject.SetActive(true);
-                    break;
-                }
-                case clueSource.TRAVEL:
-                {
-                    HomeScreen.instance.GetUbeeObject.SetActive(true);
-                    break;
-                }
-                case clueSource.PHOTO:
-                {
-                    break;
-                }
-                default:
-                {
-                    Debug.LogWarning("WARN[appButtonScript][OpenApp]: App button marked as functioning but has no type assigned to it");
-                    HomeScreen.instance.ShowHomeScreen();
-                    break;
-                }
-            } 
+                    case clueSource.CONVERSATION:
+                        {
+                            HomeScreen.instance.GetChatObject.SetActive(true);
+                            break;
+                        }
+                    case clueSource.TRAVEL:
+                        {
+                            HomeScreen.instance.GetUbeeObject.SetActive(true);
+                            break;
+                        }
+                    default:
+                        {
+                            Debug.LogWarning("WARN[appButtonScript][OpenApp]: App button marked as functioning but has no type assigned to it");
+                            HomeScreen.instance.ShowHomeScreen();
+                            break;
+                        }
+                }  
+            }
+            else
+            {
+                minorClueObject.SetActive(true);
+            }
         }
         else
         {
