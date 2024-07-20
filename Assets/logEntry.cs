@@ -4,6 +4,7 @@ using UnityEngine;
 public class logEntry : MonoBehaviour
 {
     public bool randomizedName = true;
+    public bool randomizedIcon = true;
     public string[] logNames = { "Mark", "bob" };
     public TMP_Text text;
     public GameObject callIcon;
@@ -16,6 +17,10 @@ public class logEntry : MonoBehaviour
             int randomNumber = Random.Range(0, logNames.Length);
             text.text = logNames[randomNumber];
 
+        }
+
+        if (randomizedIcon) 
+        {
             int randomnumber2 = Random.Range(0, 2);
             callIcon.SetActive(randomnumber2 == 1);
         }

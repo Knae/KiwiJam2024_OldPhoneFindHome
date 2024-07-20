@@ -940,6 +940,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1468992381712776013}
     m_Modifications:
+    - target: {fileID: 546186736930499253, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
+      propertyPath: randomizedIcon
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 656400287564928658, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
       propertyPath: m_Name
       value: LogEntry (1)
@@ -947,6 +951,10 @@ PrefabInstance:
     - target: {fileID: 4486880943619831256, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
       propertyPath: m_Name
       value: CallerName
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525553656010113037, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4616551559526687411, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
       propertyPath: m_text
@@ -1224,6 +1232,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1468992381712776013}
     m_Modifications:
+    - target: {fileID: 546186736930499253, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
+      propertyPath: randomizedIcon
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 656400287564928658, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
       propertyPath: m_Name
       value: LogEntry (3)
@@ -1239,6 +1251,10 @@ PrefabInstance:
     - target: {fileID: 4486880943619831256, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
       propertyPath: m_Name
       value: CallerName
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525553656010113037, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4616551559526687411, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
       propertyPath: m_text
