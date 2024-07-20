@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ClueManager : MonoBehaviour
@@ -93,6 +94,21 @@ public class ClueManager : MonoBehaviour
             ids.Add(item.Key);
         }
 
+        return ids;
+    }
+
+    public List<string> GetCluesOfType(clueSource type)
+    {
+        var filtered = existingClues
+            .Select(x => x)
+            .Where(y => y.Value.source == type);
+
+        List<string> ids = new List<string>();
+
+        foreach (var item in filtered)
+        {
+            ids.Add(item.Key);
+        }
         return ids;
     }
 }
