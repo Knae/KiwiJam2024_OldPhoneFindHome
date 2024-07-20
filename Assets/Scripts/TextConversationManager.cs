@@ -27,13 +27,18 @@ public class TextConversationManager : MonoBehaviour
         instance = this;
     }
 
-    private void OnEnable()
+    private void Start()
     {
         Setup();
     }
 
     void Setup() // to be called once clues are generated
     {
+        foreach(Transform t in conversationsParent)
+        {
+            Destroy(t.gameObject);
+        }
+
         int clueIndex = Random.Range(0, randomConversations.Length);
 
         for (int i = 0; i < clueIndex; i++)
