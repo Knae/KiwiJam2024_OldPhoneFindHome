@@ -10,21 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c13cf676812b41178408821291223fd, type: 3}
-  m_Name: Clue1
+  m_Name: Random2
   m_EditorClassIdentifier: 
-  contactName: Zac M-W
+  contactName: (+64) 27 327 1440
   conversation:
-  - message: Bro where are you?
+  - message: Hey it's Greg from TradeMe. Just checking in about the table, is it
+      still available?
     isUser: 0
-  - message: im at {LOC}
+  - message: Yes you can pick it up today between 2pm-6pm
     isUser: 1
-  - message: How did you get there??
+  - message: Alright cheers
     isUser: 0
-  - message: walked lol
-    isUser: 1
-  - message: Wdym you walked??
-    isUser: 0
-  - message: That's {DISTANCE}km
-    isUser: 0
-  - message: Hello???
+  - message: What's your address?
     isUser: 0
