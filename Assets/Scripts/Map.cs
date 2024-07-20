@@ -89,7 +89,7 @@ public class Map : MonoBehaviour
 
             // todo: create clue in cluemanager
             // todo: clue ID based on type
-            landmark.clueID = "typeoflandmark" + locID.ToString();
+            landmark.clueID = landmark.landmarkType.ToString() + locID.ToString();
             ClueManager.instance.discoveredClues.Add(landmark.clueID); // this is just for debug, should be adding to a list of undiscovered clues
 
             locID++;
