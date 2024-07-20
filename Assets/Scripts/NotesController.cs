@@ -46,8 +46,8 @@ public class NotesController : MonoBehaviour
     /// <param name="source"></param>
     public void AddNotes(clueClass source)
     {
-        GameObject newDescript = Instantiate(descripPrefab);
-        newDescript.transform.parent = descripArea.transform;
+        GameObject newDescript = Instantiate(descripPrefab, descripArea.transform);
+        //newDescript.transform.parent = descripArea.transform;
 
         //Build description from source
         string fullDescription = string.Empty;
@@ -99,7 +99,7 @@ public class NotesController : MonoBehaviour
                     break;
             }
             fullDescription += " hinted that the location is near the " + source.containedLandmark + ", about " + source.distance + " distance units from it";
-            newDescript.GetComponent<TMP_Text>().text = fullDescription;
         }
+        newDescript.GetComponentInChildren<TMP_Text>().text = fullDescription;
     }
 }
