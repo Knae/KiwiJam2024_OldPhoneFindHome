@@ -42,6 +42,7 @@ public class ClueManager : MonoBehaviour
         if(existingClues.ContainsKey(clueID) && !discoveredClues.Contains(clueID))
         {
             discoveredClues.Add(clueID);
+            NotesController.instance.AddNotes(existingClues["clueID"]);
             return true;
         }
         else
