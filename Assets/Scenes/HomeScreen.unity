@@ -486,6 +486,22 @@ PrefabInstance:
       propertyPath: messageApp
       value: 
       objectReference: {fileID: 1616083874}
+    - target: {fileID: 6204860249535784007, guid: af65c2e83a4da044ebdc75575d18e3a2, type: 3}
+      propertyPath: appSprites_random.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204860249535784007, guid: af65c2e83a4da044ebdc75575d18e3a2, type: 3}
+      propertyPath: appSprites_random.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5362b17fa7b571d4eb6e861f58487a04, type: 3}
+    - target: {fileID: 6204860249535784007, guid: af65c2e83a4da044ebdc75575d18e3a2, type: 3}
+      propertyPath: appSprites_random.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 6c1393daf25829d49b71dfa2648740e2, type: 3}
+    - target: {fileID: 6204860249535784007, guid: af65c2e83a4da044ebdc75575d18e3a2, type: 3}
+      propertyPath: appSprites_random.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: b46cb66f58a3dd94e84f49b8a33a9e6a, type: 3}
     - target: {fileID: 8903662092585884215, guid: af65c2e83a4da044ebdc75575d18e3a2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
