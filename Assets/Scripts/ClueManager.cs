@@ -83,4 +83,16 @@ public class ClueManager : MonoBehaviour
             return null;
         }
     }
+
+    public List<string> GetClueIDs()
+    {
+        List<string> ids = new List<string>();
+
+        foreach (var item in existingClues)
+        {
+            ids.Add(item.Key);
+        }
+
+        return ids;
+    }
 }

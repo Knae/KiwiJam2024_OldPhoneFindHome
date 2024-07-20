@@ -36,6 +36,9 @@ public class Map : MonoBehaviour
     [SerializeField] MapRegion homeRegion;
     [SerializeField] MapLocation home;
 
+    private bool setupComplete = false;
+    public bool setupDone=> setupComplete;
+
     private void Awake()
     {
         instance = this;
@@ -91,7 +94,8 @@ public class Map : MonoBehaviour
             string landmarkName = landmark.landmarkType.ToString() + locID;
             
             clueClass clue = new clueClass();
-            clue.SetData(homeRegion.clueRegion, clueSource.NONE, landmarkDistance, landmarkName);
+            int randomSource = Random.Range(1, (int)clueSource.PHOTO);
+            clue.SetData(homeRegion.clueRegion, (clueSource)randomSource , landmarkDistance, landmarkName);
 
             landmark.clueID = clue.getBaseName;
 
@@ -119,6 +123,8 @@ public class Map : MonoBehaviour
                 locID++;
             }
         }
+
+        setupComplete = true;
     }
 
     MapLocation CreateRandomLocation(MapRegion region)
