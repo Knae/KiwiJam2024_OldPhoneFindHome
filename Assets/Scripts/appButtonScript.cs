@@ -9,8 +9,6 @@ public class appButtonScript : MonoBehaviour
     [SerializeField] private clueSource appType = clueSource.NONE;
     [SerializeField] private Image appImage;
 
-    [SerializeField] private GameObject chatModule;
-
     public bool isWorking => functioning;
 
     public void SetAsWorkingApp(clueSource type, Sprite imageSprite)
@@ -34,8 +32,9 @@ public class appButtonScript : MonoBehaviour
             {
                 case clueSource.CONVERSATION:
                     {
-                        chatModule.SetActive(true);
+                        //chatModule.SetActive(true);
                         HomeScreen.instance.HideShowScreen();
+                        HomeScreen.instance.GetChatObject.SetActive(true);
                         break;
                     }
                 case clueSource.TRAVEL:

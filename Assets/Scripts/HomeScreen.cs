@@ -11,10 +11,13 @@ public class HomeScreen : MonoBehaviour
     public List<Sprite> appSprites_random;
 
     public static HomeScreen instance;
-
+    [Header("Connected Elements")]
+    [SerializeField] private GameObject messageApp;
     [SerializeField] private List<appButtonScript> appButtons = new List<appButtonScript>();
 
     private bool setupComplete = false;
+
+    public GameObject GetChatObject => messageApp;
 
     private void Awake()
     {
@@ -33,6 +36,7 @@ public class HomeScreen : MonoBehaviour
     void Start()
     {
         StartCoroutine(ConnectApps());
+        ShowHomeScreen();
     }
 
     // Update is called once per frame
@@ -70,6 +74,7 @@ public class HomeScreen : MonoBehaviour
     public void ShowHomeScreen()
     {
         gameObject.SetActive(true);
+        messageApp.gameObject.SetActive(false);
     }
 
     public void HideShowScreen()

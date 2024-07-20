@@ -22,10 +22,13 @@ public class MapRegion : MonoBehaviour//InteractableAfterClue
 
     public clueRegion clueRegion;
 
-    private void Start()
+    private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+    }
 
+    private void Start()
+    {
         button.onClick.AddListener(() =>
         {
             Map.instance.ViewRegion(this);
