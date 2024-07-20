@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapLocation : InteractableAfterClue
 {
     [SerializeField] GameObject radiusImage;
     RectTransform radiusTransform;
     [SerializeField] public float radius;
+
+    public Map.LandmarkType landmarkType;
+    public Image image;
 
     public RectTransform RectTransform
     {

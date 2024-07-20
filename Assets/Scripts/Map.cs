@@ -20,7 +20,16 @@ public class Map : MonoBehaviour
 
     [SerializeField] ScrollRect scrollRect;
 
+    public enum LandmarkType
+    {
+        House,
+        Lake,
+        Mountain,
+        Tower,
+        Pin,
+    }
     [Header("Map Generation")]
+    [SerializeField] Sprite[] landmarkSprites;
     [SerializeField] GameObject locationPrefab;
 
     [Header("Clues & Home")]
@@ -47,11 +56,14 @@ public class Map : MonoBehaviour
         // pick home location and create pin for it
         homeRegion = regions[Random.Range(0, regions.Length)];
         home = CreateRandomLocation(homeRegion);
+        home.landmarkType = LandmarkType.House;
+        home.image.sprite = landmarkSprites[0];
 
         // create landmarks around home and create clues for them
-        for (int i = 0; i < Random.Range(1, 4); i++)
+        for (int i = 0; i < Random.Range(2, 5); i++)
         {
             MapLocation landmark = CreateRandomLocation(homeRegion);
+
             int landmarkDistance = Random.Range(50, 400);
 
             // put position at random point landmarkDistance away from home
@@ -65,9 +77,20 @@ public class Map : MonoBehaviour
 
             landmark.radius = landmarkDistance;
 
+            // create a random location to ensure the home isn't the only place in the radius
+            MapLocation randomLoc = CreateRandomLocation(homeRegion);
+            angle = Random.Range(0, 360);
+            pos = new Vector2(
+                Mathf.Cos(angle),
+                Mathf.Sin(angle)
+            ) * landmarkDistance;
+            randomLoc.RectTransform.anchoredPosition = landmark.RectTransform.anchoredPosition + pos;
+            locID++;
+
             // todo: create clue in cluemanager
             // todo: clue ID based on type
             landmark.clueID = "typeoflandmark" + locID.ToString();
+            ClueManager.instance.discoveredClues.Add(landmark.clueID); // this is just for debug, should be adding to a list of undiscovered clues
 
             locID++;
         }
@@ -77,7 +100,7 @@ public class Map : MonoBehaviour
         // create random non-clue landmarks to clutter map
         foreach(MapRegion r in regions)
         {
-            for (int i = 0; i < Random.Range(5, 10); i++)
+            for (int i = 0; i < Random.Range(5, 15); i++)
             {
                 CreateRandomLocation(r);
                 locID++;
@@ -97,7 +120,10 @@ public class Map : MonoBehaviour
         );
         loc.RectTransform.anchoredPosition = pos;
 
-        // todo: random type of location (e.g. mountain, shop, house) and sprite based on that
+        // random type of location (e.g. mountain, lake, house) and sprite based on that
+        System.Array vals = System.Enum.GetValues(typeof(LandmarkType));
+        loc.landmarkType = (LandmarkType)vals.GetValue(Random.Range(0, vals.Length));
+        loc.image.sprite = landmarkSprites[(int)loc.landmarkType];
 
         return loc;
 
