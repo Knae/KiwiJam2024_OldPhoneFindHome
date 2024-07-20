@@ -14,4 +14,9 @@ public class addressPopUp : MonoBehaviour
         text.text = input;
     }
 
+    public void ClosePopup()
+    {
+        gameObject.SetActive(false);
+    }
+
 }

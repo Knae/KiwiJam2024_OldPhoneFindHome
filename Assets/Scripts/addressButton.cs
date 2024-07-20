@@ -11,5 +11,6 @@ public class addressButton : MonoBehaviour
     public void setPopUpText()
     { 
         addressPopUp.setText(input);
+        addressPopUp.gameObject.SetActive(true);
     }
 }
