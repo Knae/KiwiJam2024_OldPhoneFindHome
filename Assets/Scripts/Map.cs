@@ -91,7 +91,8 @@ public class Map : MonoBehaviour
             string landmarkName = landmark.landmarkType.ToString() + locID;
             
             clueClass clue = new clueClass();
-            clue.SetData(homeRegion.clueRegion, clueSource.NONE, landmarkDistance, landmarkName);
+            int randomSource = Random.Range(1, (int)clueSource.PHOTO);
+            clue.SetData(homeRegion.clueRegion, (clueSource)randomSource , landmarkDistance, landmarkName);
 
             landmark.clueID = clue.getBaseName;
 
