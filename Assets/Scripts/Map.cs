@@ -113,7 +113,7 @@ public class Map : MonoBehaviour
         // create random non-clue landmarks to clutter map
         foreach (MapRegion r in regions)
         {
-            for (int i = 0; i < Random.Range(5, 15); i++)
+            for (int i = 0; i < Random.Range(10, 25); i++)
             {
                 CreateRandomLocation(r);
                 locID++;
