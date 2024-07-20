@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: f5e98665962264b4b8bf44fbf6d62551
+<<<<<<< HEAD
+guid: 06fc13dcba90a42bba3cac387ab21cc1
+=======
+guid: a7df905d996b9d84c842b259409e9fc4
+>>>>>>> origin/add_images
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
