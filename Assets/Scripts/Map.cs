@@ -94,21 +94,21 @@ public class Map : MonoBehaviour
             string landmarkName = landmark.landmarkType.ToString() + locID;
             
             clueClass clue = new clueClass();
-            int randomSource = Random.Range(1, (int)clueSource.PHOTO);
-            clue.SetData(homeRegion.clueRegion, (clueSource)randomSource , landmarkDistance, landmarkName);
+            int randomSource = Random.Range(1, (int)clueSource.MAX);
+            clue.SetData(/*homeRegion.clueRegion*/clueRegion.NONE, (clueSource)randomSource , landmarkDistance, landmarkName);
 
             landmark.clueID = clue.getBaseName;
 
             ClueManager.instance.AddClue(landmark.clueID, clue);
 
-            ClueManager.instance.FoundClue(landmark.clueID); // this is just for debug, should be adding to a list of undiscovered clues
+            //ClueManager.instance.FoundClue(landmark.clueID); // this is just for debug, should be adding to a list of undiscovered clues
 
             locID++;
         }
 
         // create clue for region
-        int randomRegionNum = Random.Range(1, (int)clueRegion.WEST);
-        int randomRegionSource = Random.Range(1, (int)clueSource.PHOTO);
+        int randomRegionNum = Random.Range(1, (int)clueRegion.MAX);
+        int randomRegionSource = Random.Range(1, (int)clueSource.MAX);
         string regionClueID = "regionClue";
         clueClass newRegionClue = new clueClass();
         newRegionClue.SetData((clueRegion)randomRegionNum, (clueSource)randomRegionSource);

@@ -8,18 +8,21 @@ public class HomeScreen : MonoBehaviour
     public Sprite appSprite_Chat;
     public Sprite appSprite_Photos;
     public Sprite appSprite_Uber;
+    public Sprite appSprite_CallLog;
     public List<Sprite> appSprites_random;
 
     public static HomeScreen instance;
     [Header("Connected Elements")]
     [SerializeField] private GameObject messageApp;
     [SerializeField] private GameObject ubeeApp;
+    [SerializeField] private GameObject phoneLogApp;
     [SerializeField] private List<appButtonScript> appButtons = new List<appButtonScript>();
 
     private bool setupComplete = false;
 
     public GameObject GetChatObject => messageApp;
     public GameObject GetUbeeObject => ubeeApp;
+    public GameObject GetCallLogObject => phoneLogApp;
 
     private void Awake()
     {
@@ -70,6 +73,9 @@ public class HomeScreen : MonoBehaviour
         //setup a uber app
         appButtons[getRandomIndex()].SetAsWorkingApp(clueSource.TRAVEL, appSprite_Uber);
 
+        //setup call log
+        appButtons[getRandomIndex()].SetAsHintApp( appSprite_CallLog, phoneLogApp);
+
         //setup a photos app
 
         //Set other apps as non-functional
@@ -90,6 +96,7 @@ public class HomeScreen : MonoBehaviour
         gameObject.SetActive(true);
         messageApp.gameObject.SetActive(false);
         ubeeApp.gameObject.SetActive(false);
+        phoneLogApp.gameObject.SetActive(false);
     }
 
     public void HideShowScreen()
