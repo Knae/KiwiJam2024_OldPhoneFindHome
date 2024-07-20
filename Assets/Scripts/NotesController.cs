@@ -54,28 +54,28 @@ public class NotesController : MonoBehaviour
 
         if (source.containedRegion != clueRegion.NONE)
         {
-            fullDescription += "The location seems to be in the ";
+            fullDescription += "The location seems to be in ";
 
             switch (source.containedRegion) 
             {
                 case clueRegion.NORTH:
                 {
-                        fullDescription += "north region.";
+                        fullDescription += "the north shore.";
                         break;
                 }
-                case clueRegion.SOUTH:
+                case clueRegion.CENTRAL:
                 {
-                        fullDescription += "south region.";
+                        fullDescription += "central Auckland.";
                         break;
                 }
                 case clueRegion.WEST:
                 {
-                        fullDescription += "west region.";
+                        fullDescription += "west Auckland.";
                         break;
                 }
                 case clueRegion.EAST:
                 {
-                        fullDescription += "east region.";
+                        fullDescription += "southeast Auckland.";
                         break;
                 }
             }

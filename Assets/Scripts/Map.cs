@@ -53,7 +53,8 @@ public class Map : MonoBehaviour
 
         for (int i = 0; i < regions.Length; i++)
         {
-            regions[i].landmarks = regions[i].region.GetComponentsInChildren<MapLocation>();
+            regions[i].landmarks = regions[i].region.GetComponentsInChildren<MapLocation>(true);
+            Debug.Log(regions[i].region.clueRegion + " " + regions[i].landmarks.Length);
         }
     }
 
@@ -92,10 +93,13 @@ public class Map : MonoBehaviour
 
         // create clues based on distance to 3 random landmarks in that region
         // using loop with a random start index to avoid randomly selecting the same landmark multiple times
+        Debug.Log(homeRegion.region.clueRegion);
+        Debug.Log(homeRegion.landmarks.Length);
         int index = Random.Range(0, homeRegion.landmarks.Length);
         int landmarkCount = 0;
         while(landmarkCount < 3)
         {
+            Debug.Log(index);
             MapLocation landmark = homeRegion.landmarks[index];
             int dist = (int)Vector2.Distance(
                     landmark.RectTransform.anchoredPosition,
@@ -111,6 +115,8 @@ public class Map : MonoBehaviour
             ClueManager.instance.AddClue(landmarkClue.getBaseName, landmarkClue);
 
             landmark.clueID = landmarkClue.getBaseName;
+
+            landmarkCount++;
 
             index++;
             if (index >= homeRegion.landmarks.Length)
