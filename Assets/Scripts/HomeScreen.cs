@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class HomeScreen : MonoBehaviour
 {
+
+
     [SerializeField] private List<GameObject> appButtons = new List<GameObject>();
-    [SerializeField] private List<clueClass> existingClues = new List<clueClass>();
+
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        ClueManager.instance.GenerateClues();
     }
 
     // Update is called once per frame
@@ -24,6 +26,6 @@ public class HomeScreen : MonoBehaviour
     /// </summary>
     void GenerateClues()
     {
-
+        
     }
 }

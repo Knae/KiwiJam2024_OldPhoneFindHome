@@ -1,39 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System.ComponentModel;
+//using UnityEngine;
 
-enum clueSource
+public enum clueSource
 {
+    [Description("None")]
     NONE,
+    [Description("Travel App")]
     TRAVEL,
+    [Description("Chat App")]
     CONVERSATION,
+    [Description("Photo Gallery")]
     PHOTO
 }
 
-enum clueRegion
+public enum clueRegion
 {
+    [Description ("no region")]
     NONE,
+    [Description ("north")]
     NORTH,
+    [Description("east")]
     EAST,
+    [Description("west")]
     WEST,
+    [Description("south")]
     SOUTH
 }
 
 
-public class clueClass : MonoBehaviour
+public class clueClass// : MonoBehaviour
 {
-    [SerializeField] private string clueID;
-    [SerializeField] private clueSource clueSource;
-    [SerializeField] private string keyLandmark;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private string clueBaseName;
+    private clueSource sourceApp;
+    private clueRegion region;
+    private float distanceToLocation;
+    private string keyLandmark;
 
-    // Update is called once per frame
-    void Update()
+    public string getBaseName => clueBaseName;
+    public clueSource source => sourceApp;
+    public clueRegion containedRegion => region;
+    public float distance => distanceToLocation;
+    public string containedLandmark => keyLandmark;
+
+    public void SetData(clueRegion _region = clueRegion.NONE, clueSource source = clueSource.NONE,float distance = 0.0f, string landmarkName = "N/A")
     {
-        
+        sourceApp = (source==clueSource.NONE)?clueSource.TRAVEL:source;
+        region = _region;
+        keyLandmark = landmarkName;
+        distanceToLocation = distance;
+
+        clueBaseName = source.ToString()+ "_" + region.ToString()+ "_" + landmarkName;
     }
 }

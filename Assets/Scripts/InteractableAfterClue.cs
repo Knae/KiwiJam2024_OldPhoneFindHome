@@ -30,6 +30,6 @@ public class InteractableAfterClue : MonoBehaviour
 
     public void Check()
     {
-        button.interactable = ClueManager.instance.discoveredClues.Contains(clueID);
+        button.interactable = ClueManager.instance.ClueRevealed(clueID);
     }
 }
