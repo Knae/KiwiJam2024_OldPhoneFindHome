@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Corrupted3
   m_EditorClassIdentifier: 
   conversation:
-  - message: It's these damn newfangled updates, breaking everything!
-    isUser: 1
   - message: Bloody old phone, can't get anything working here
+    isUser: 1
+  - message: Stop complaining, just find my old house
+    isUser: 0
+  - message: Alright, alright, stop rushing me
     isUser: 1

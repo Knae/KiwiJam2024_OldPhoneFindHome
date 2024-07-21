@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ubbeeLogList : MonoBehaviour
 {
@@ -73,6 +74,7 @@ public class ubbeeLogList : MonoBehaviour
             if (logClue.containedRegion == clueRegion.NONE)
             {
                 GameObject newLog = Instantiate(logPrefab, logListArea.transform);
+                newLog.GetComponent<Button>().interactable = true;
                 newLogs.Add(newLog);
                 newLog.GetComponent<addressButton>().SetLogDisplay(logClue.containedLandmark, (logClue.distance / 10).ToString("F2") + " km", true, item); 
             }

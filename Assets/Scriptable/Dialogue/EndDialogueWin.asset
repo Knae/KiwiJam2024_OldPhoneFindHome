@@ -17,18 +17,44 @@ MonoBehaviour:
     isUser: 0
   - message: I think so. Let's go
     isUser: 1
-  - message: '[the sound of time passing]'
-    isUser: 0
-  - message: Oh my god
-    isUser: 0
-  - message: Is this the place?
+  - message: 'Why are you still clutching the chest, do you actually need the hospital? '
     isUser: 1
-  - message: It is! Oh, thank you, sonny!
+  - message: 'I would rather we went to the place first, please.. '
     isUser: 0
-  - message: Now I can go in peace, in the place I grew up in, childhood memories
-      all around...
+  - message: 'Please, let this old man see it one last time. '
     isUser: 0
-  - message: Goodbye, kid.
+  - message: 'Fine, if it means we get you to the hospital faster. '
+    isUser: 1
+  - message: "Thanks kid.. You\u2019re a good one"
     isUser: 0
+  - message: '[Time passes as the lights dance across the pair sitting on the backseat
+      as Grandpa stares out the window, marveling at the wonders he sees]'
+    isUser: 0
+  - message: ' Is this the place?'
+    isUser: 1
+  - message: ...
+    isUser: 0
+  - message: Grandpa?
+    isUser: 1
+  - message: "Thanks kid, really\u2026"
+    isUser: 0
+  - message: 'In my pocket is the death insurance papers and the bitecard to pay
+      the funeral cost, I even added a little extra just for you. '
+    isUser: 0
+  - message: "The asshats couldn\u2019t keep the bill separate, so like cash it out
+      at your bank. "
+    isUser: 0
+  - message: Wait, I got to-
+    isUser: 1
+  - message: " Didn\u2019t your grandmother teach you manners? It\u2019s rude to
+      cut off an old person. Hehe."
+    isUser: 0
+  - message: '[Grandpa goes to the bench and sits down, smiling as the light fade
+      from his eyes.] '
+    isUser: 0
+  - message: ...
+    isUser: 0
+  - message: ...
+    isUser: 1
   - message: Goodbye, grandad.
     isUser: 1

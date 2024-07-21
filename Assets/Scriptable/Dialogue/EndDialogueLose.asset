@@ -15,26 +15,35 @@ MonoBehaviour:
   conversation:
   - message: You've found it?
     isUser: 0
-  - message: I think so. Let's go.
+  - message: I think so. Let's go
     isUser: 1
-  - message: '[the sound of time passing]'
-    isUser: 0
-  - message: This... doesn't look right
-    isUser: 0
-  - message: What do you mean?
+  - message: 'Why are you still clutching the chest, do you actually need the hospital? '
     isUser: 1
-  - message: I think we're in the wrong place. The trees are wrong.
+  - message: 'I would rather we went to the place first, please.. '
     isUser: 0
-  - message: '*cough*'
+  - message: 'Please, let this old man see it one last time. '
     isUser: 0
-  - message: Are you good?
+  - message: 'Fine, if it means we get you to the hospital faster. '
     isUser: 1
-  - message: My time is coming. It may be too late for me...
+  - message: "Thanks kid.. You\u2019re a good one"
     isUser: 0
-  - message: If only I could have spent these last moments in a place I felt at home,
-      but alas.
+  - message: '[Time passes as the lights dance across the pair sitting on the backseat
+      as Grandpa stares out the window, marveling at the wonders he sees]'
     isUser: 0
-  - message: No, grandad!!
+  - message: Hmmm...
+    isUser: 0
+  - message: Is this the place?
     isUser: 1
-  - message: Goodbye, kid...
+  - message: "This can\u2019t be the place. The trees, the houses.. It looks wrong.."
+    isUser: 0
+  - message: 'I mean this area got recently developed, they tore down a lot of the
+      old houses. '
+    isUser: 1
+  - message: I think... I think we've gone to the wrong place
+    isUser: 0
+  - message: Maybe, but seriously, we should be heading to-
+    isUser: 1
+  - message: '[Grandpa falls to his knees, tears coming from his eyes, then falling
+      onto his side. Eyes full of regret and disappointment as his lifeless body
+      is shaken softly before the final pulse goes.]'
     isUser: 0
