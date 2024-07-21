@@ -628,6 +628,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1468992381712776013}
     m_Modifications:
+    - target: {fileID: 546186736930499253, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
+      propertyPath: randomizedName
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 656400287564928658, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
       propertyPath: m_Name
       value: LogEntry (5)
@@ -640,6 +644,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -11.984
       objectReference: {fileID: 0}
+    - target: {fileID: 1313483035705568175, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
+      propertyPath: _hintText
+      value: Won't shut up
+      objectReference: {fileID: 0}
     - target: {fileID: 3504320956390780337, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
       propertyPath: m_text
       value: 14/05/2009
@@ -650,7 +658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4616551559526687411, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
       propertyPath: m_text
-      value: Mum
+      value: Noah
       objectReference: {fileID: 0}
     - target: {fileID: 4616551559526687411, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
       propertyPath: m_fontColor.b
@@ -786,9 +794,21 @@ PrefabInstance:
       propertyPath: randomizedName
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 546186736930499253, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
+      propertyPath: descriptions.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 546186736930499253, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
+      propertyPath: descriptions.Array.data[3]
+      value: I like this guy
+      objectReference: {fileID: 0}
     - target: {fileID: 656400287564928658, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
       propertyPath: m_Name
       value: LogEntry
+      objectReference: {fileID: 0}
+    - target: {fileID: 1313483035705568175, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
+      propertyPath: _hintText
+      value: Yo momma
       objectReference: {fileID: 0}
     - target: {fileID: 4486880943619831256, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
       propertyPath: m_Name
@@ -944,9 +964,17 @@ PrefabInstance:
       propertyPath: randomizedIcon
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 546186736930499253, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
+      propertyPath: randomizedName
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 656400287564928658, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
       propertyPath: m_Name
       value: LogEntry (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1313483035705568175, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
+      propertyPath: _hintText
+      value: I don't like this guy
       objectReference: {fileID: 0}
     - target: {fileID: 4486880943619831256, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
       propertyPath: m_Name
@@ -958,7 +986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4616551559526687411, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
       propertyPath: m_text
-      value: Coworker
+      value: Asshat
       objectReference: {fileID: 0}
     - target: {fileID: 4616551559526687411, guid: 1902776304c5e4d4e84a87c0e955ec35, type: 3}
       propertyPath: m_fontColor.b

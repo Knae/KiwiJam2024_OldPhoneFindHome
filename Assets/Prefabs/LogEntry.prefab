@@ -92,10 +92,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d12dd9cecfd81e842a4f06c11be643df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hint: {fileID: 1313483035705568175}
   randomizedName: 1
+  randomizedIcon: 1
   logNames:
-  - Mark
-  - bob
+  - Noah
+  - (+64) 123 456 789
+  - Asshat
+  - Alice
+  descriptions:
+  - Not him again...
+  - Unidentified caller...
+  - I don't like this guy
+  - I like this guy
   text: {fileID: 4616551559526687411}
   callIcon: {fileID: 4525553656010113037}
 --- !u!1 &4486880943619831256
@@ -559,3 +568,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1178651142004372241, guid: 9668f61f835966d41a9c60ae1e395080, type: 3}
   m_PrefabInstance: {fileID: 2243350587321059167}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1313483035705568175 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 944514184665951472, guid: 9668f61f835966d41a9c60ae1e395080, type: 3}
+  m_PrefabInstance: {fileID: 2243350587321059167}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bad0ab2010625542b71478b274dc6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
