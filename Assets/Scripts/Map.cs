@@ -235,16 +235,7 @@ public class Map : MonoBehaviour
 
     public void ConfirmGuess()
     {
-        if(selectedLocation == home)
-        {
-            Debug.Log("win");
-            // player wins
-        }
-        else
-        {
-            Debug.Log("lose");
-            // player loses
-        }
+        Dialogue.instance.Ending(selectedLocation == home);
     }
     public void CancelGuess()
     {

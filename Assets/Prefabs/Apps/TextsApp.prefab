@@ -919,6 +919,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 98e61e048d50d4405b36893765e6130f, type: 2}
   - {fileID: 11400000, guid: bcd8dbb1e5b5446859bcae9bdf84320d, type: 2}
   - {fileID: 11400000, guid: 33b6499b99458410ba9a490d79f2ed4b, type: 2}
+  - {fileID: 11400000, guid: 2e031d3c25c974c50966666936f6d67b, type: 2}
   regionClueConversations:
   - {fileID: 11400000, guid: 7d7b1f37e56ca4f45911fe5f98bb96d9, type: 2}
   - {fileID: 11400000, guid: d813f552ddc4d4dda8912454f3ed67fa, type: 2}

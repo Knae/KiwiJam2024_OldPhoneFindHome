@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee6a952c3c8b45cea5d99aaad99bd13, type: 3}
+  m_Name: EndDialogueLose
+  m_EditorClassIdentifier: 
+  conversation:
+  - message: You've found it?
+    isUser: 0
+  - message: I think so. Let's go.
+    isUser: 1
+  - message: '[the sound of time passing]'
+    isUser: 0
+  - message: This... doesn't look right
+    isUser: 0
+  - message: What do you mean?
+    isUser: 1
+  - message: I think we're in the wrong place. The trees are wrong.
+    isUser: 0
+  - message: '*cough*'
+    isUser: 0
+  - message: Are you good?
+    isUser: 1
+  - message: My time is coming. It may be too late for me...
+    isUser: 0
+  - message: If only I could have spent these last moments in a place I felt at home,
+      but alas.
+    isUser: 0
+  - message: No, grandad!!
+    isUser: 1
+  - message: Goodbye, kid...
+    isUser: 0
