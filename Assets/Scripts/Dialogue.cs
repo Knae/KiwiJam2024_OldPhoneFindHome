@@ -10,6 +10,7 @@ public class Dialogue : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI dialogueText;
     [SerializeField] Image chatBox;
+    [SerializeField] GameObject dialogueArea;
 
     [SerializeField] Sprite playerSpeech;
     [SerializeField] Sprite otherCharacterSpeech;
@@ -20,6 +21,14 @@ public class Dialogue : MonoBehaviour
     [SerializeField] DialogueScript openingDialogue;
 
     [SerializeField] DialogueScript[] corruptedAppDialogues;
+
+    [Header("Ending Dialogue")]
+    [SerializeField] DialogueScript endingWin;
+    [SerializeField] DialogueScript endingLose;
+    bool endingDialogue = false;
+    bool playerWon;
+    [SerializeField] GameObject winUI;
+    [SerializeField] GameObject loseUI;
 
     private void Awake()
     {
@@ -50,7 +59,7 @@ public class Dialogue : MonoBehaviour
     public void StartConversation(DialogueScript conversation)
     {
         currentConversation = conversation;
-        chatBox.gameObject.SetActive(true);
+        dialogueArea.SetActive(true);
         NextLine(0);
     }
 
@@ -65,7 +74,12 @@ public class Dialogue : MonoBehaviour
             if (index >= currentConversation.conversation.Length)
             {
                 currentConversation = null;
-                chatBox.gameObject.SetActive(false);
+                dialogueArea.SetActive(false);
+
+                if(endingDialogue) {
+                    GameObject endUI = playerWon ? winUI : loseUI;
+                    endUI.SetActive(true);
+                }
 
                 return;
             }
@@ -75,5 +89,12 @@ public class Dialogue : MonoBehaviour
 
         chatBox.sprite = line.isUser ? playerSpeech : otherCharacterSpeech;
         dialogueText.text = line.message;
+    }
+
+    public void Ending(bool win)
+    {
+        endingDialogue = true;
+        playerWon = win;
+        StartConversation(win ? endingWin : endingLose);
     }
 }

@@ -18,10 +18,6 @@ public class ViewSwitcher : MonoBehaviour
         {
             SetView(true);
         }
-        else if(Input.GetKeyDown(KeyCode.Space))
-        {
-            SetView(!mapView);
-        }
     }
 
     void SetView(bool right)
@@ -29,5 +25,8 @@ public class ViewSwitcher : MonoBehaviour
         referenceFrame.SetTrigger(right ? "PanRight" : "PanLeft");
 
         mapView = right;
+
+        if (mapView)
+            Map.instance.ShowMap(); // update locations with clues
     }
 }
