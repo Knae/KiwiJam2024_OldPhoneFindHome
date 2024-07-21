@@ -17,6 +17,8 @@ public class TextConversationManager : MonoBehaviour
     [SerializeField] GameObject otherMessage;
     [SerializeField] GameObject userMessage;
 
+    [SerializeField] public ScrollRect conversationScrollRect;
+
     [Header("Setup")]
     [SerializeField] Transform conversationsParent;
     [SerializeField] GameObject conversationPrefab;
@@ -44,7 +46,7 @@ public class TextConversationManager : MonoBehaviour
 
         int clueIndex = Random.Range(0, randomConversations.Length);
         //TODO: create either a random conversation or a clue conversation at random rather then in sequence?
-        for (int i = 0; i < clueIndex; i++)
+        for (int i = 0; i < randomConversations.Length; i++)
         {
             CreateConversation(randomConversations[i]);
         }
@@ -80,22 +82,19 @@ public class TextConversationManager : MonoBehaviour
                 convIndex++;
             }
         }
-
-        for (int i = clueIndex; i < randomConversations.Length; i++)
-        {
-            CreateConversation(randomConversations[i]);
-        }
     }
 
     void CreateConversation(TextConversation conversation)
     {
         TextConversationButton c = Instantiate(conversationPrefab, conversationsParent).GetComponent<TextConversationButton>();
+        c.transform.SetSiblingIndex(Random.Range(0, c.transform.parent.childCount - 1));
         c.Setup(conversation);
     }
 
     void CreateConversation_Clue(TextConversation conversation, string clueID)
     {
         TextConversationButton c = Instantiate(conversationPrefab, conversationsParent).GetComponent<TextConversationButton>();
+        c.transform.SetSiblingIndex(Random.Range(0, c.transform.parent.childCount - 1));
         c.Setup(conversation,clueID);
     }
 
@@ -154,7 +153,7 @@ public class TextConversationManager : MonoBehaviour
             //replace DISTANCE with distance
             else if(keyword.Equals("DISTANCE"))
             {
-                outputString += attachedClue.distance.ToString();
+                outputString += (attachedClue.distance / 10).ToString();
             }
             else if(keyword.Equals("REGION"))
             {

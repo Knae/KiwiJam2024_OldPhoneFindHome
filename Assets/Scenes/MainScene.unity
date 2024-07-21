@@ -1426,25 +1426,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713326086}
   m_CullTransparentMesh: 1
---- !u!1 &741483926 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3268631160838714134, guid: 657ae3e28d32948589ae6384e7b7b91b, type: 3}
-  m_PrefabInstance: {fileID: 2363267173196338203}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &741483929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 741483926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
-  m_VerticalFit: 2
 --- !u!1 &1019295265
 GameObject:
   m_ObjectHideFlags: 0
@@ -3196,61 +3177,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2139576109335751142, guid: 657ae3e28d32948589ae6384e7b7b91b, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2139576109335751142, guid: 657ae3e28d32948589ae6384e7b7b91b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2139576109335751142, guid: 657ae3e28d32948589ae6384e7b7b91b, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -17
-      objectReference: {fileID: 0}
-    - target: {fileID: 3908536110040298992, guid: 657ae3e28d32948589ae6384e7b7b91b, type: 3}
-      propertyPath: m_ChildControlHeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5188099916559819886, guid: 657ae3e28d32948589ae6384e7b7b91b, type: 3}
-      propertyPath: regionClueConversations.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5188099916559819886, guid: 657ae3e28d32948589ae6384e7b7b91b, type: 3}
-      propertyPath: regionClueConversations.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 7d7b1f37e56ca4f45911fe5f98bb96d9, type: 2}
     - target: {fileID: 6812105895619000135, guid: 657ae3e28d32948589ae6384e7b7b91b, type: 3}
       propertyPath: m_Name
       value: TextsApp
       objectReference: {fileID: 0}
-    - target: {fileID: 6812105895619000135, guid: 657ae3e28d32948589ae6384e7b7b91b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8386624522423824216, guid: 657ae3e28d32948589ae6384e7b7b91b, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8386624522423824216, guid: 657ae3e28d32948589ae6384e7b7b91b, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -17
-      objectReference: {fileID: 0}
-    - target: {fileID: 8437791243909339605, guid: 657ae3e28d32948589ae6384e7b7b91b, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8437791243909339605, guid: 657ae3e28d32948589ae6384e7b7b91b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3268631160838714134, guid: 657ae3e28d32948589ae6384e7b7b91b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 741483929}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 657ae3e28d32948589ae6384e7b7b91b, type: 3}
 --- !u!224 &3304730165015749352 stripped
 RectTransform:
