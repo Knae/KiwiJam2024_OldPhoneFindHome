@@ -32,6 +32,7 @@ public class TextConversationButton : MonoBehaviour
         contactName.text = conversation.contactName;
         button.onClick.AddListener(() =>
         {
+            TextConversationManager.instance.conversationScrollRect.verticalNormalizedPosition = 0;
             TextConversationManager.instance.OpenConversation(conversation, hasClue,attachedClueID);
         });
         lastMessage.text = "Last message: " + orderedDates[this.transform.GetSiblingIndex()];
