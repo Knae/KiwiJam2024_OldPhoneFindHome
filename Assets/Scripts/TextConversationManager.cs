@@ -152,7 +152,7 @@ public class TextConversationManager : MonoBehaviour
             //replace DISTANCE with distance
             else if(keyword.Equals("DISTANCE"))
             {
-                outputString += (attachedClue.distance / 10).ToString();
+                outputString += (attachedClue.distance / 10).ToString() + "km";
             }
             else if(keyword.Equals("REGION"))
             {
