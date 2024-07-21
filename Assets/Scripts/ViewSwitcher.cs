@@ -18,10 +18,6 @@ public class ViewSwitcher : MonoBehaviour
         {
             SetView(true);
         }
-        else if(Input.GetKeyDown(KeyCode.Space))
-        {
-            SetView(!mapView);
-        }
     }
 
     void SetView(bool right)

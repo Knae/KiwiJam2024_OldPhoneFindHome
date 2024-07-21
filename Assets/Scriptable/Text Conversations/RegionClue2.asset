@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c13cf676812b41178408821291223fd, type: 3}
+  m_Name: RegionClue2
+  m_EditorClassIdentifier: 
+  contactName: Asshat
+  conversation:
+  - message: 'Hey, this is Johnny, new number because some Hoodie boy took my fav
+      Herme croc bag with my stuff. '
+    isUser: 0
+  - message: "lowkey, I didn\u2019t report it because the dumbass threw my bag to
+      the side. #Supportpoor"
+    isUser: 0
+  - message: 'Like no hate,  #Dontjudge but Hoodies look crap and like only crimies
+      wear them. '
+    isUser: 0
+  - message: Ok, adding number to the list
+    isUser: 1
+  - message: 'Chill that sass, I need a big fav from you, the boss is getting on
+      my ass about some boxes from a warehouse in Silverdale. '
+    isUser: 0
+  - message: Can you sort it out??
+    isUser: 0
+  - message: ' You mean the missing order from yesterday? The one I tried to tell
+      you about?'
+    isUser: 1
+  - message: 'Like when? '
+    isUser: 0
+  - message: "Don\u2019t tell me"
+    isUser: 0
+  - message: when I was going to
+    isUser: 0
+  - message: But, w
+    isUser: 1
+  - message: 'Are you interrupting me? '
+    isUser: 0
+  - message: "Don\u2019t answer, rhetorical. "
+    isUser: 0
+  - message: "Just do it, it\u2019ll look good for the upcoming promotion. "
+    isUser: 0
+  - message: "You know I\u2019m on the review board, scratching backs and all. "
+    isUser: 0
+  - message: "Is the fuel paid for though? I\u2019m in {REGION}"
+    isUser: 1
+  - message: Call me, lets sort this.
+    isUser: 0
