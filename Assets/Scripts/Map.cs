@@ -50,6 +50,8 @@ public class Map : MonoBehaviour
     [SerializeField] Region homeRegion;
     [SerializeField] MapLocation home;
 
+    [SerializeField] RectTransform scaler;
+
     //private bool setupComplete = false;
     //public bool setupDone=> setupComplete;
 
@@ -207,6 +209,8 @@ public class Map : MonoBehaviour
 
         scrollRect.normalizedPosition = Vector2.one * 0.5f;
 
+        scaler.localScale = Vector3.one;
+
         backButton.SetActive(false);
     }
 
@@ -216,6 +220,8 @@ public class Map : MonoBehaviour
         currentView = MapView.Region;
 
         backButton.SetActive(true);
+
+        scaler.localScale = Vector3.one * 0.85f;
 
         foreach (Region r in regions)
         {

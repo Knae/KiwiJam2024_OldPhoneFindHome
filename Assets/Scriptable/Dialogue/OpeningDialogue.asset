@@ -13,27 +13,67 @@ MonoBehaviour:
   m_Name: OpeningDialogue
   m_EditorClassIdentifier: 
   conversation:
-  - message: Come on mate, gotta get you home
+  - message: Hey grandpa, how was the flight?
     isUser: 1
-  - message: SCOTLAAND FOREVERRR!!!! FREEDOOOOOOM!!!!!!
+  - message: "It was fine, the assistant wouldn\u2019t stop asking me if I wanted
+      whiskey even after I told him I don\u2019t drink. Another bot leaked some oil
+      on me, heck, there were barely any people on it."
     isUser: 0
-  - message: Sheesh, you've had a bit. Alright, get in the car
+  - message: Grandpa, you took Jetstar, what did you expect?
     isUser: 1
-  - message: '*sounds of dragging*'
+  - message: I expect humans
     isUser: 0
-  - message: Where do you live again?
+  - message: "And I don\u2019t expect to drive around the commercial freight warehouse
+      to find you. Oh and I managed to dig up the Happle you asked. Like I\u2019m
+      still surprised it update-"
     isUser: 1
-  - message: Arghsghskggghhhh I don't know man just check my tablet
+  - message: 'YOU FOOL! '
     isUser: 0
-  - message: Ok pass it
-    isUser: 1
-  - message: Huh? I can't access it
-    isUser: 1
-  - message: Oh shit, it must be that big network outage that took out the banks
-      and stuff
-    isUser: 1
-  - message: You don't have your address written anywhere else?
-    isUser: 1
-  - message: Uhhh I guess it might be somewhere in this old phone, you can try have
-      a look
+  - message: '[he takes the phone off your hand as he frantically searches through
+      it.]'
     isUser: 0
+  - message: "You don\u2019t update the Mindow, that, will, break, it!"
+    isUser: 0
+  - message: "Crap, ahem, let\u2019s sit down at the cafe first ok? Grandpa? Why
+      are you clutching at your chest like that - is it itching or something?"
+    isUser: 1
+  - message: "I'm fine, fine, lead the way while I\u2019m checking\u2026 "
+    isUser: 0
+  - message: "Oh god the photos don\u2019t even work, where\u2019s the home address??
+      Didn\u2019t you just come from there?"
+    isUser: 0
+  - message: 'Be careful of the coffee, it costed me $150. '
+    isUser: 1
+  - message: Wait, one-fifty? I remember when-
+    isUser: 0
+  - message: yeah it use to be 4 dollars, I remember Grandpa, and I remember when
+      they used to be 20 dollars.
+    isUser: 1
+  - message: 'Did you find it? '
+    isUser: 1
+  - message: "The address? Maybe I could have if someone didn\u2019t download that
+      malware-"
+    isUser: 0
+  - message: "It\u2019s the modern day Grandpa, Mindow isn\u2019t malware."
+    isUser: 1
+  - message: "It may as well be, it practically destroyed the phone, the photos don\u2019t
+      work, the hyperlinks I set in are broken, and even the home address on Oggole
+      Maps is broken."
+    isUser: 0
+  - message: Wait, do you have those new fancy glasses, ink, re-
+    isUser: 0
+  - message: Squidbite? Yeah, how did you know?
+    isUser: 1
+  - message: When you called me before the flight, it had that logo at the bottom
+      of the screen.
+    isUser: 0
+  - message: Yeah, it-
+    isUser: 1
+  - message: 'I heard it can help hack older phones, can you help me get the data
+      back? '
+    isUser: 0
+  - message: I like really want to see the old place where I grew up, I.. can you
+      help me find the place?
+    isUser: 0
+  - message: "With the glasses I can get it out quick, give me a sec to scan in\u2026."
+    isUser: 1
