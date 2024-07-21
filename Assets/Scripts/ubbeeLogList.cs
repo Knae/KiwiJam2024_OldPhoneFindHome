@@ -6,8 +6,8 @@ public class ubbeeLogList : MonoBehaviour
 {
     [SerializeField] private GameObject logPrefab;
     [SerializeField] private GameObject logListArea;
-    [SerializeField] private int randomizerLoopCount = 4;
-    [SerializeField] private int totalLogs = 6;
+    [SerializeField] private int randomizerLoopCount = 10;
+    [SerializeField] private int totalLogs_Random = 6;
     [SerializeField] private int totalLogs_Friends = 2;
     [Range(2,60)]
     [SerializeField] private Vector2 randomDistanceRange = new Vector2(2,50);
@@ -23,7 +23,7 @@ public class ubbeeLogList : MonoBehaviour
             randomDistanceRange.y = temp;
         }
 
-        GenerateLogs();
+        Map.instance.onCluesGenerated += GenerateLogs;
     }
 
     // Update is called once per frame
@@ -45,29 +45,47 @@ public class ubbeeLogList : MonoBehaviour
 
         randomName.Add("Mall");randomName.Add("University");randomName.Add("Hair Saloon");
 
-        for (int r = 0; r < randomizerLoopCount; r++)
-        {
-            int switchT_1 = Random.Range(0, randomName.Count);
-            int switchT_2 = Random.Range(0, randomName.Count);
-
-            string tempName = randomName[switchT_1];
-            randomName[switchT_1] = randomName[switchT_2];
-            randomName[switchT_2] = tempName;
-        }
+        List<string> ubbeeClueIDs = ClueManager.instance.GetCluesOfType(clueSource.TRAVEL);
 
         //Generate which index to be the clue
-        int clueIndex = Random.Range(0, totalLogs - 1);
-        //Generate log at random, run a set amount of times
-        for (int i = 0; i < totalLogs - 1; i++) 
+        int clueIndex = Random.Range(0, totalLogs_Random - 1);
+        List<GameObject> newLogs = new List<GameObject>();
+        //Generate random logs
+        for (int i = 0; i < randomName.Count; i++) 
         {
-            if(i == clueIndex)
-            {
-                addressButton newLog = Instantiate(logPrefab, logListArea.transform).GetComponent<addressButton>();
-                newLog.SetLogDisplay("Work","TODO",true);
-            }
-
-            addressButton newRandomLog = Instantiate(logPrefab, logListArea.transform).GetComponent<addressButton>();            
-            newRandomLog.SetLogDisplay(randomName[i], Random.Range(randomDistanceRange.x,randomDistanceRange.y).ToString("F2") + " km", true);
+            GameObject newRandomLog = Instantiate(logPrefab, logListArea.transform);
+            newLogs.Add(newRandomLog);
+            newRandomLog.GetComponent<addressButton>().SetLogDisplay(randomName[i], Random.Range(randomDistanceRange.x, randomDistanceRange.y).ToString("F2") + " km", false) ;
         }
+
+        foreach (var item in ubbeeClueIDs)
+        {
+            clueClass logClue = ClueManager.instance.GetClue(item);
+            if (logClue.containedRegion == clueRegion.NONE)
+            {
+                GameObject newLog = Instantiate(logPrefab, logListArea.transform);
+                newLogs.Add(newLog);
+                newLog.GetComponent<addressButton>().SetLogDisplay(logClue.containedLandmark, (logClue.distance / 10).ToString("F2") + " km", true, item); 
+            }
+        }
+
+
+        for (int r = 0; r < randomizerLoopCount; r++)
+        {
+            int switchT_1 = Random.Range(0, newLogs.Count);
+            int switchT_2 = Random.Range(0, newLogs.Count);
+
+            //Need a better way to do this
+            GameObject tempObject = newLogs[switchT_1];
+            newLogs[switchT_1] = newLogs[switchT_2];
+            newLogs[switchT_2] = tempObject;
+        }
+
+        foreach (var item in newLogs)
+        {
+            item.transform.SetParent(logListArea.transform);
+        }
+
+        Map.instance.onCluesGenerated -= GenerateLogs;
     }
 }

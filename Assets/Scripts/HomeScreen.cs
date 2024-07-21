@@ -9,6 +9,7 @@ public class HomeScreen : MonoBehaviour
     public Sprite appSprite_Photos;
     public Sprite appSprite_Uber;
     public Sprite appSprite_CallLog;
+    public Sprite appSprite_Slack;
     public List<Sprite> appSprites_random;
 
     public static HomeScreen instance;
@@ -78,15 +79,21 @@ public class HomeScreen : MonoBehaviour
         //setup call log
         appButtons[getRandomIndex()].SetAsHintApp( appSprite_CallLog, phoneLogApp);
 
-        //setup a photos app
-
         //Set other apps as non-functional
-        //List<int> usedN
+        bool slackCreated = false;
         foreach (var button in appButtons)
         {
             if (!button.isWorking)
             {
-                button.SetAsBroken(appSprites_random[UnityEngine.Random.Range(0, appSprites_random.Count - 1)]);
+                if (slackCreated)
+                {
+                    button.SetAsBroken(appSprites_random[UnityEngine.Random.Range(0, appSprites_random.Count - 1)]); 
+                }
+                else
+                {
+                    button.SetAsBroken(appSprite_Slack);
+                    slackCreated = true;
+                }
             }
         }
 
