@@ -103,7 +103,7 @@ MonoBehaviour:
   descriptions:
   - Not him again...
   - Unidentified caller...
-  - I don't like this guy
+  - 'Just one more day... '
   - I like this guy
   text: {fileID: 4616551559526687411}
   callIcon: {fileID: 4525553656010113037}
