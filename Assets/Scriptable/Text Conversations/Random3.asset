@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c13cf676812b41178408821291223fd, type: 3}
+  m_Name: Random3
+  m_EditorClassIdentifier: 
+  contactName: Asshat
+  conversation:
+  - message: 'Hey it''s Johnny (using the company phone today), are you coming into
+      work today? Heard from HR you accepted the job? '
+    isUser: 0
+  - message: Johnny your manager in case you forgot or something
+    isUser: 0
+  - message: Just letting you know, I sent you the address in Slack, you are in it
+      right?
+    isUser: 0
+  - message: Uhh, no, nobody added me
+    isUser: 1
+  - message: Lowkey I feel like you don't have the commitment to be part of our team
+      :\
+    isUser: 0

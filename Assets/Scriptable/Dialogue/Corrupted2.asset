@@ -9,18 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c13cf676812b41178408821291223fd, type: 3}
-  m_Name: Random1
+  m_Script: {fileID: 11500000, guid: 3ee6a952c3c8b45cea5d99aaad99bd13, type: 3}
+  m_Name: Corrupted2
   m_EditorClassIdentifier: 
-  contactName: Dad
   conversation:
-  - message: We need more milk
-    isUser: 0
-  - message: Do we have enough eggs?
+  - message: It's corrupted
     isUser: 1
-  - message: Not sure, I'll check
+  - message: It's these damn newfangled updates, breaking everything!
     isUser: 0
-  - message: No, could you get some please?
-    isUser: 0
-  - message: Ok
+  - message: (Yeah sure, not the crappy old tech or anything)
     isUser: 1

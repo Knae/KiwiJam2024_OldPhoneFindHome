@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c13cf676812b41178408821291223fd, type: 3}
+  m_Name: Clue3
+  m_EditorClassIdentifier: 
+  contactName: Mum
+  conversation:
+  - message: "Hey, when are you coming home? You know I hate cold food on the table.
+      I\u2019ve told you multiple times that it\u2019s unhealthy to be gorging on
+      that junk. "
+    isUser: 0
+  - message: "I told you I am working overtime\u2026 Do we have to do this?"
+    isUser: 1
+  - message: Oh? Then why is your Happle Family location saying {LOC} then??
+    isUser: 0
+  - message: When did you become so rude to ignore my text? I thought I taught you
+      better
+    isUser: 0
+  - message: ...
+    isUser: 1
+  - message: "Mom I\u2019m working at {LOC} as a temp, because it is like {DISTANCE}
+      away. "
+    isUser: 1
+  - message: 'You never tell me anything. '
+    isUser: 0
+  - message: I
+    isUser: 1
+  - message: Nevermind, need to get back to work. Talk soon.
+    isUser: 1
