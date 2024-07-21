@@ -90,9 +90,12 @@ public class NotesController : MonoBehaviour
                 case clueSource.CONVERSATION:
                 fullDescription = "A chat conversation ";
                     break;
-                case clueSource.PHOTO:
-                    fullDescription = "A photo in the gallery ";
-                    break;
+                //case clueSource.PHOTO:
+                //    fullDescription = "A photo in the gallery ";
+                //    break;
+                //case clueSource.CALLS:
+                //    fullDescription = "A call log ";
+                //    break;
                 case clueSource.NONE:
                 default:
                     fullDescription = "There was something that ";

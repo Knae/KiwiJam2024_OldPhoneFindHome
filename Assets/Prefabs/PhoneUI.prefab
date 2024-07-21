@@ -164,12 +164,18 @@ MonoBehaviour:
   appSprite_Chat: {fileID: 21300000, guid: 658b89e82d7aec14685a58d1585717db, type: 3}
   appSprite_Photos: {fileID: 21300000, guid: f5d1f59c93de5274a91cb5a7972ee7e1, type: 3}
   appSprite_Uber: {fileID: 21300000, guid: e356043623e24f64f82fe38c65900dcb, type: 3}
+  appSprite_CallLog: {fileID: 21300000, guid: 7fe9c42d8859cf348ad78c9001432d96, type: 3}
   appSprites_random:
   - {fileID: 21300000, guid: 419ba7de3c77bb94bb8548f56f40fc6c, type: 3}
   - {fileID: 21300000, guid: 05d3879f411d7714891b93867a308480, type: 3}
   - {fileID: 21300000, guid: f6abfa448a889fb40b80ccdcf48c128f, type: 3}
   - {fileID: 21300000, guid: b71174cbd143346498b750777492b3d7, type: 3}
-  - {fileID: 21300000, guid: 7fe9c42d8859cf348ad78c9001432d96, type: 3}
+  - {fileID: 21300000, guid: 5362b17fa7b571d4eb6e861f58487a04, type: 3}
+  - {fileID: 21300000, guid: 6c1393daf25829d49b71dfa2648740e2, type: 3}
+  - {fileID: 21300000, guid: b46cb66f58a3dd94e84f49b8a33a9e6a, type: 3}
+  messageApp: {fileID: 0}
+  ubeeApp: {fileID: 0}
+  phoneLogApp: {fileID: 0}
   appButtons:
   - {fileID: 1953059893704957672}
   - {fileID: 8525245539573538453}

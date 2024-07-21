@@ -11,8 +11,9 @@ public enum clueSource
     TRAVEL,
     [Description("Chat App")]
     CONVERSATION,
-    [Description("Photo Gallery")]
-    PHOTO
+    //[Description("Photo Gallery")]
+    //PHOTO,
+    MAX
 }
 
 public enum clueRegion
