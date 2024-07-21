@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor.XR;
 using UnityEngine.Rendering;
 
 public class TextConversationManager : MonoBehaviour

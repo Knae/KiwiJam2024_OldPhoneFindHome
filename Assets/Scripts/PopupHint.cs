@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class PopupHint : MonoBehaviour
 {
     [Header("Hint Setting")]
-    [SerializeField] private string _hintText;
+    public string _hintText;
     [SerializeField] private TMP_Text _textDisplay;
     [SerializeField] private GameObject _textBaseRect;
     [SerializeField] private bool _enabled = true;
