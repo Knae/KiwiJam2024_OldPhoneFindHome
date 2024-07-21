@@ -16,7 +16,7 @@ public class ubbeeLogList : MonoBehaviour
 
     private void Awake()
     {
-        Map.instance.onCluesGenerated += GenerateLogs;
+        //Map.instance.onCluesGenerated += GenerateLogs;
     }
 
     // Start is called before the first frame update
@@ -34,6 +34,11 @@ public class ubbeeLogList : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnEnable()
+    {
+        GenerateLogs();
     }
 
     private void GenerateLogs()
@@ -90,6 +95,6 @@ public class ubbeeLogList : MonoBehaviour
             item.transform.SetParent(logListArea.transform);
         }
 
-        Map.instance.onCluesGenerated -= GenerateLogs;
+        //Map.instance.onCluesGenerated -= GenerateLogs;
     }
 }
