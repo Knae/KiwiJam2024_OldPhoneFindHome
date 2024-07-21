@@ -25,5 +25,8 @@ public class ViewSwitcher : MonoBehaviour
         referenceFrame.SetTrigger(right ? "PanRight" : "PanLeft");
 
         mapView = right;
+
+        if (mapView)
+            Map.instance.ShowMap(); // update locations with clues
     }
 }
