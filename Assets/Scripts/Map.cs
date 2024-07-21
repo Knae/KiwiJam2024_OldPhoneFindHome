@@ -92,7 +92,7 @@ public class Map : MonoBehaviour
 
         // create clue for region
         clueClass regionClue = new clueClass();
-        int source = Random.Range(0, (int)clueSource.PHOTO);
+        int source = Random.Range(0, (int)clueSource.MAX);
         regionClue.SetData(homeRegion.region.clueRegion, (clueSource)source);
         ClueManager.instance.AddClue(regionClue.getBaseName, regionClue);
 
@@ -119,7 +119,7 @@ public class Map : MonoBehaviour
             landmark.radius = dist;
 
             clueClass landmarkClue = new clueClass();
-            source = Random.Range(0, (int)clueSource.PHOTO);
+            source = Random.Range(0, (int)clueSource.MAX);
             landmarkClue.SetData(clueRegion.NONE, (clueSource)source, dist, landmark.GetName);
 
             ClueManager.instance.AddClue(landmarkClue.getBaseName, landmarkClue);
