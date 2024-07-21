@@ -14,7 +14,8 @@ public class addressButton : MonoBehaviour
     public List<string> addresses;
     public bool useRandomAddress;
 
-    public bool setAsClue = false;
+    private bool setAsClue = false;
+    private string attachedClueID = string.Empty;
 
     private void Awake()
     {
@@ -26,11 +27,12 @@ public class addressButton : MonoBehaviour
         //}
     }
 
-    public void SetLogDisplay( string text,string distance, bool isClue)
+    public void SetLogDisplay( string text,string distance, bool isClue, string clueID = "")
     {
         addressText.text = text;
         distanceText.text = distance;
         setAsClue = isClue;
+        attachedClueID = clueID;
     }
 
     //public string getRandomAddress(int index)
@@ -40,9 +42,9 @@ public class addressButton : MonoBehaviour
 
     public void onClick()
     {
-        if(setAsClue)
+        if(setAsClue && !ClueManager.instance.ClueRevealed(attachedClueID))
         {
-
+            ClueManager.instance.FoundClue(attachedClueID);
         }
     }
 

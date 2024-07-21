@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class Map : MonoBehaviour
 {
@@ -49,9 +50,10 @@ public class Map : MonoBehaviour
     [SerializeField] Region homeRegion;
     [SerializeField] MapLocation home;
 
-    private bool setupComplete = false;
-    public bool setupDone=> setupComplete;
+    //private bool setupComplete = false;
+    //public bool setupDone=> setupComplete;
 
+    public event Action onCluesGenerated;
     private void Awake()
     {
         instance = this;
@@ -78,7 +80,7 @@ public class Map : MonoBehaviour
         // create random houses in each region
         foreach(Region r in regions)
         {
-            for (int i = 0; i < Random.Range(5, 15); i++)
+            for (int i = 0; i < UnityEngine.Random.Range(5, 15); i++)
             {
                 MapLocation newLoc = CreateRandomLocation(r.region, LandmarkType.House);
                 newLoc.guessable = true;
@@ -88,11 +90,11 @@ public class Map : MonoBehaviour
         }
 
         // pick region for home to be in
-        homeRegion = regions[Random.Range(0, regions.Length)];
+        homeRegion = regions[UnityEngine.Random.Range(0, regions.Length)];
 
         // create clue for region
         clueClass regionClue = new clueClass();
-        int source = Random.Range(0, (int)clueSource.MAX);
+        int source = UnityEngine.Random.Range(0, (int)clueSource.MAX);
         regionClue.SetData(homeRegion.region.clueRegion, (clueSource)source);
         ClueManager.instance.AddClue(regionClue.getBaseName, regionClue);
 
@@ -105,7 +107,7 @@ public class Map : MonoBehaviour
         // using loop with a random start index to avoid randomly selecting the same landmark multiple times
         Debug.Log(homeRegion.region.clueRegion);
         Debug.Log(homeRegion.landmarks.Length);
-        int index = Random.Range(0, homeRegion.landmarks.Length);
+        int index = UnityEngine.Random.Range(0, homeRegion.landmarks.Length);
         int landmarkCount = 0;
         while(landmarkCount < 3)
         {
@@ -120,7 +122,7 @@ public class Map : MonoBehaviour
 
             // create and addclue
             clueClass landmarkClue = new clueClass();
-            source = Random.Range(0, (int)clueSource.MAX);
+            source = UnityEngine.Random.Range(0, (int)clueSource.MAX);
             landmarkClue.SetData(clueRegion.NONE, (clueSource)source, dist, landmark.GetName);
 
             ClueManager.instance.AddClue(landmarkClue.getBaseName, landmarkClue);
@@ -131,7 +133,7 @@ public class Map : MonoBehaviour
 
             // add another house that distance away so you actually need multiple clues to narrow it down
             // trig to find random point on circle
-            float angle = Random.Range(0, 360);
+            float angle = UnityEngine.Random.Range(0, 360);
             Vector2 pos = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * dist;
             // create house
             CreateRandomLocation(homeRegion.region, LandmarkType.House).RectTransform.anchoredPosition = landmark.RectTransform.anchoredPosition + pos;
@@ -143,7 +145,8 @@ public class Map : MonoBehaviour
                 index = 0;
         }
 
-        setupComplete = true;
+        //setupComplete = true;
+        onCluesGenerated?.Invoke();
     }
 
     MapLocation CreateRandomLocation(MapRegion region)
@@ -153,14 +156,14 @@ public class Map : MonoBehaviour
 
         // random position
         Vector2 pos = new Vector2(
-            Random.Range(region.minLocationPos.x, region.maxLocationPos.x),
-            Random.Range(region.minLocationPos.y, region.maxLocationPos.y)
+            UnityEngine.Random.Range(region.minLocationPos.x, region.maxLocationPos.x),
+            UnityEngine.Random.Range(region.minLocationPos.y, region.maxLocationPos.y)
         );
         loc.RectTransform.anchoredPosition = pos;
 
         // random type of location (e.g. mountain, lake, house) and sprite based on that
         System.Array vals = System.Enum.GetValues(typeof(LandmarkType));
-        loc.landmarkType = (LandmarkType)vals.GetValue(Random.Range(0, vals.Length));
+        loc.landmarkType = (LandmarkType)vals.GetValue(UnityEngine.Random.Range(0, vals.Length));
         loc.image.sprite = landmarkSprites[(int)loc.landmarkType];
 
         return loc;
@@ -172,8 +175,8 @@ public class Map : MonoBehaviour
 
         // random position
         Vector2 pos = new Vector2(
-            Random.Range(region.minLocationPos.x, region.maxLocationPos.x),
-            Random.Range(region.minLocationPos.y, region.maxLocationPos.y)
+            UnityEngine.Random.Range(region.minLocationPos.x, region.maxLocationPos.x),
+            UnityEngine.Random.Range(region.minLocationPos.y, region.maxLocationPos.y)
         );
         loc.RectTransform.anchoredPosition = pos;
 

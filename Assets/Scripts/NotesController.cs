@@ -101,7 +101,7 @@ public class NotesController : MonoBehaviour
                     fullDescription = "There was something that ";
                     break;
             }
-            fullDescription += "hinted that the location is near the " + source.containedLandmark + ", about " + (source.distance / 10) + " distance units from it";
+            fullDescription += "hinted that the location is near the " + source.containedLandmark + ", about " + (source.distance / 10) + " km from it";
         }
         newDescript.GetComponentInChildren<TMP_Text>().text = fullDescription;
     }
