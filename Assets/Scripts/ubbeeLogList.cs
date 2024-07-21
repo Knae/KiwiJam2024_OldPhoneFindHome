@@ -13,6 +13,12 @@ public class ubbeeLogList : MonoBehaviour
     [SerializeField] private Vector2 randomDistanceRange = new Vector2(2,50);
     [SerializeField] private List<string> friendNames = new List<string>();
     [SerializeField] private List<string> friendPlace = new List<string>();
+
+    private void Awake()
+    {
+        Map.instance.onCluesGenerated += GenerateLogs;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +28,6 @@ public class ubbeeLogList : MonoBehaviour
             randomDistanceRange.x = randomDistanceRange.y;
             randomDistanceRange.y = temp;
         }
-
-        Map.instance.onCluesGenerated += GenerateLogs;
     }
 
     // Update is called once per frame

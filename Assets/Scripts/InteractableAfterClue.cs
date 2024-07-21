@@ -9,6 +9,9 @@ public class InteractableAfterClue : MonoBehaviour
 
     [SerializeField] public Button button;
 
+    [SerializeField] Image glow;
+    [SerializeField] RectTransform rectTransform;
+
     public bool overrideInteractable = false;
 
     // Start is called before the first frame update
@@ -33,6 +36,17 @@ public class InteractableAfterClue : MonoBehaviour
     public void Check()
     {
         if(!overrideInteractable)
-            button.interactable = ClueManager.instance.ClueRevealed(clueID);
+        {
+            bool clueRevealed = ClueManager.instance.ClueRevealed(clueID);
+            button.interactable = clueRevealed;
+            if (glow != null)
+            {
+                glow.enabled = clueRevealed;
+            }
+            if(rectTransform != null)
+            {
+                rectTransform.localScale = Vector3.one * (clueRevealed ? 1.1f : 1);
+            }
+        }
     }
 }

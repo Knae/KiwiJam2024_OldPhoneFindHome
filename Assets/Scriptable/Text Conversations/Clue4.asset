@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c13cf676812b41178408821291223fd, type: 3}
+  m_Name: Clue4
+  m_EditorClassIdentifier: 
+  contactName: Noah
+  conversation:
+  - message: 'yo, watchu doin this weekend? '
+    isUser: 0
+  - message: nothin much
+    isUser: 1
+  - message: wassup?
+    isUser: 1
+  - message: I got tickets bro!
+    isUser: 0
+  - message: ' Remember that cool gig i told you i get back on a few weeks back?
+      I got the time now so got them tickets. '
+    isUser: 0
+  - message: 'That event at {LOC}?? '
+    isUser: 1
+  - message: "You told me last week you weren\u2019t free??"
+    isUser: 1
+  - message: "Yeah but I\u2019m free now"
+    isUser: 0
+  - message: I got your tickets though?
+    isUser: 0
+  - message: 'You live closer than me, help a bro out. '
+    isUser: 0
+  - message: I got a thing with my Mum! You cannot spring stuff like this!
+    isUser: 1
+  - message: You letting me crash or not?
+    isUser: 0
+  - message: 'Youre {DISTANCE} away '
+    isUser: 0
+  - message: help a bro
+    isUser: 0
+  - message: Fine.
+    isUser: 1
+  - message: Let me talk to my mum.
+    isUser: 1

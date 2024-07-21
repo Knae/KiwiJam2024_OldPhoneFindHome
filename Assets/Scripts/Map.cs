@@ -111,22 +111,32 @@ public class Map : MonoBehaviour
         int landmarkCount = 0;
         while(landmarkCount < 3)
         {
-            Debug.Log(index);
+            // pick a random landmark
             MapLocation landmark = homeRegion.landmarks[index];
+            // get distance
             int dist = (int)Vector2.Distance(
                     landmark.RectTransform.anchoredPosition,
                     home.RectTransform.anchoredPosition
             );
 
-            landmark.radius = dist;
 
+            // create and addclue
             clueClass landmarkClue = new clueClass();
             source = UnityEngine.Random.Range(0, (int)clueSource.MAX);
             landmarkClue.SetData(clueRegion.NONE, (clueSource)source, dist, landmark.GetName);
 
             ClueManager.instance.AddClue(landmarkClue.getBaseName, landmarkClue);
 
+            // set up landmark object
             landmark.clueID = landmarkClue.getBaseName;
+            landmark.radius = dist;
+
+            // add another house that distance away so you actually need multiple clues to narrow it down
+            // trig to find random point on circle
+            float angle = UnityEngine.Random.Range(0, 360);
+            Vector2 pos = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * dist;
+            // create house
+            CreateRandomLocation(homeRegion.region, LandmarkType.House).RectTransform.anchoredPosition = landmark.RectTransform.anchoredPosition + pos;
 
             landmarkCount++;
 
@@ -228,16 +238,7 @@ public class Map : MonoBehaviour
 
     public void ConfirmGuess()
     {
-        if(selectedLocation == home)
-        {
-            Debug.Log("win");
-            // player wins
-        }
-        else
-        {
-            Debug.Log("lose");
-            // player loses
-        }
+        Dialogue.instance.Ending(selectedLocation == home);
     }
     public void CancelGuess()
     {
